@@ -35,7 +35,7 @@ void createGobelins();
 void attackProcess(Monsters* attacker, Monsters* victim);
 
 
-/* Allow monsters to get back Health after the duel */
+/* Monsters recover 75% of their actual health */
 void healthRecovery(Monsters* monster);
 
 
@@ -61,5 +61,9 @@ Monsters* getMonstersArray();
 
 /* Get one specific monster, using its array and index*/
 Monsters* getMonsterAtIndex(Monsters* array, int index);
+
+
+/* Initialize the randomness to time */
+void initRandomSeed();
 
 #endif

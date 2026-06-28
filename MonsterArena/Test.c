@@ -5,6 +5,7 @@
 int main() {
 
     displayFeatures();
+    //initRandomSeed();
 
     createOrks();
     createRockGolems();
@@ -20,7 +21,10 @@ int main() {
     seeOneMonster(getMonsterAtIndex(MonstersArray, 0));
     seeOneMonster(getMonsterAtIndex(MonstersArray, 1));
 
-    printf("Okay");
+    healthRecovery(getMonsterAtIndex(MonstersArray, 1));
+    seeOneMonster(getMonsterAtIndex(MonstersArray, 1));
+
+    printf("\nOkay");
 
     return 0;
 } 

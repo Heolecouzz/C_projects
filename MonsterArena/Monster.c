@@ -2,6 +2,7 @@
 #include "Monster.h"
 #include <stdlib.h>
 #include <string.h>
+#include <time.h>
 
 
 typedef struct Monsters {
@@ -154,4 +155,14 @@ Monsters* getMonstersArray() {
 
 Monsters* getMonsterAtIndex(Monsters* array, int index) {
     return &array[index];
+}
+
+
+void healthRecovery(Monsters* monster) {
+    monster->health *= 1.75;
+}
+
+
+void initRandomSeed() {
+    srand(time(NULL));
 }
