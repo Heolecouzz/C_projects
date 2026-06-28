@@ -1,0 +1,3 @@
+The idea behind this is to generate 100 randoms monsters and to track the results.
+
+Between each round, they evolve and then we can see who wins
