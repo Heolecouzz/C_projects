@@ -43,8 +43,11 @@ void healthRecovery(Monsters* monster);
 void evolve(Monsters* monster);
 
 
-
 /* Display the whole tree until the final winner */
 void displayWinnerTree();
+
+
+/* Display all the monsters after creation*/
+void seeMonsters();
 
 #endif
