@@ -47,7 +47,19 @@ void evolve(Monsters* monster);
 void displayWinnerTree();
 
 
-/* Display all the monsters after creation*/
+/* Display the statistics of all monsters after creation*/
 void seeMonsters();
+
+
+/* Display the statistics of one monster*/
+void seeOneMonster(Monsters* monster);
+
+
+/* Get the array of monsters, after creating the monsters*/
+Monsters* getMonstersArray();
+
+
+/* Get one specific monster, using its array and index*/
+Monsters* getMonsterAtIndex(Monsters* array, int index);
 
 #endif

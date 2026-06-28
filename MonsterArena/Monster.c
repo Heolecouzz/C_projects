@@ -1,14 +1,15 @@
 #include <stdio.h>
 #include "Monster.h"
 #include <stdlib.h>
+#include <string.h>
 
 
 typedef struct Monsters {
     char* type;
     int health;
     int damage;
-    int defense;
-    float special[2];
+    float defense;
+    float special;
     Monsters* defeatedMonsters;
 } Monsters;
 
@@ -35,9 +36,8 @@ void createOrks() {
         monster.type = "Ork";
         monster.health = 300 + rand() % 201;
         monster.damage = 45 + rand() % 36;
-        monster.defense = 0 + rand() % 11;
-        monster.special[0] = 0.25;
-        monster.special[1] = 1/8;
+        monster.defense = 1 - ((0 + rand() % 11) / 100);
+        monster.special = 1.25;
         monster.defeatedMonsters = NULL;
 
         monstersArray[k*increment] = monster;
@@ -54,9 +54,8 @@ void createRockGolems() {
         monster.type = "Rock Golems";
         monster.health = 1200 + rand() % 801;
         monster.damage = 15 + rand() % 6;
-        monster.defense = 0 + rand() % 11;
-        monster.special[0] = 0.25;
-        monster.special[1] = 1/8;
+        monster.defense = 1 - ((0 + rand() % 11) / 100);
+        monster.special = 1.5;
         monster.defeatedMonsters = NULL;
 
         monstersArray[1 + k*increment] = monster;
@@ -73,9 +72,8 @@ void createJaguarians() {
         monster.type = "Jaguarians";
         monster.health = 300 + rand() % 201;
         monster.damage = 15 + rand() % 6;
-        monster.defense = 35 + rand() % 6;
-        monster.special[0] = 0.05;
-        monster.special[1] = 1/8;
+        monster.defense = 1 - ((35 + rand() % 6) / 100);
+        monster.special = 1.05;
         monster.defeatedMonsters = NULL;
 
         monstersArray[2 + k*increment] = monster;
@@ -92,8 +90,7 @@ void createGobelins() {
         monster.type = "Gobelins";
         monster.health = 300 + rand() % 201;
         monster.damage = 15 + rand() % 6;
-        monster.defense = 0 + rand() % 11;
-        monster.special[1] = 3/8;
+        monster.defense = 1 - ((0 + rand() % 11) / 100);
         monster.defeatedMonsters = NULL;
 
         monstersArray[3 + k*increment] = monster;
@@ -106,4 +103,55 @@ void seeMonsters() {
     for (int i = 0; i < 100; i++) {
         printf("Type : %s // Health : %d // Damages : %d\n", monstersArray[i].type, monstersArray[i].health, monstersArray[i].damage);
     }
+}
+
+
+void seeOneMonster(Monsters* monster) {
+    printf("\nType : %s // Health : %d // Damages : %d\n", monster->type, monster->health, monster->damage);
+}
+
+
+void attackProcess(Monsters* attacker, Monsters* victim) {
+
+    // Specials 
+    int randNumber = rand() % 9;
+
+    if (strcmp(attacker->type, "Orks")) {
+        if (randNumber == 0) {
+            attacker->damage *= attacker->special;
+        }
+    } else if (strcmp(attacker->type, "Rock Golems")){
+        if (randNumber == 0) {
+            attacker->health *= attacker->special;
+        }
+    } else if (strcmp(attacker->type, "Jaguarians")) {
+        if (randNumber == 0) {
+            attacker->defense *= attacker->special;
+        }
+    } else {
+        if (randNumber == 0 || randNumber == 1 || randNumber == 2) {
+            if (strcmp(victim->type, "Orks")) {
+                attacker->damage *= victim->special;
+            } else if (strcmp(victim->type, "Rock Golems")) {
+                attacker->health *= victim->special; 
+            } else if (strcmp(victim->type, "Jaguarians")) {
+                attacker->defense *= victim->special;
+            }
+        }
+    }
+
+    // Attack and Defense
+    if (attacker->health > 0) {
+        victim->health -= (int) (attacker->damage * victim->defense);
+    }
+}
+
+
+Monsters* getMonstersArray() {
+    return monstersArray;
+}
+
+
+Monsters* getMonsterAtIndex(Monsters* array, int index) {
+    return &array[index];
 }
