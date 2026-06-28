@@ -1,13 +1,6 @@
 /* This module is used to create monsters */ 
 
-typedef struct Monsters {
-    char* type;
-    int health;
-    int damage;
-    int defense;
-    void* special;
-    Monsters* defeatedMonsters;
-} Monsters;
+typedef struct Monsters Monsters;
 
 
 /* For each types of monsters, display their features at their creation. Example :
