@@ -39,8 +39,8 @@ void attackProcess(Monsters* attacker, Monsters* victim);
 void healthRecovery(Monsters* monster);
 
 
-/* Allow monsters to evolve up to 5% on every features*/
-void evolve(Monsters* monster);
+/* See if the monster has won or not*/
+int isDefeated(Monsters* victim);
 
 
 /* Display the whole tree until the final winner */

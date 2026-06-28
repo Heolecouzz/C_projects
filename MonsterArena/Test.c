@@ -24,6 +24,11 @@ int main() {
     healthRecovery(getMonsterAtIndex(MonstersArray, 1));
     seeOneMonster(getMonsterAtIndex(MonstersArray, 1));
 
+    int ShouldBe0;
+
+    ShouldBe0 = isDefeated(getMonsterAtIndex(MonstersArray, 1));
+    printf("%d", ShouldBe0);
+
     printf("\nOkay");
 
     return 0;

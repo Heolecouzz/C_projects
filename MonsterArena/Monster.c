@@ -166,3 +166,12 @@ void healthRecovery(Monsters* monster) {
 void initRandomSeed() {
     srand(time(NULL));
 }
+
+
+int isDefeated(Monsters* victim) {
+    
+    if (victim->health <= 0) {
+        return 1;
+    } 
+    return 0;
+}
