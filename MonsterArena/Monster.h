@@ -1,5 +1,8 @@
 /* This module is used to create monsters */ 
 
+#ifndef MONSTER_H
+#define MONSTER_H
+
 typedef struct Monsters Monsters;
 
 
@@ -43,3 +46,5 @@ void evolve(Monsters* monster);
 
 /* Display the whole tree until the final winner */
 void displayWinnerTree();
+
+#endif
