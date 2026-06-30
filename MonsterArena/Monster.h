@@ -80,6 +80,6 @@ int monsterHealth(Monsters* monster);
 
 
 /* Set the health to a certain level */
-void setHeath(Monsters* monster, int hp);
+void setHealth(Monsters* monster, int hp);
 
 #endif

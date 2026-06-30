@@ -29,6 +29,18 @@ void recover(Monsters* MonstersArray) {
     }
 }
 
+int numAliveMonster(Monsters* MonsterArray) {
+
+    int num = 0;
+    for (int i = 0; i < 100; i++) {
+        Monsters* monster = getMonsterAtIndex(MonsterArray, i);
+        if (!isDefeated(monster)) {
+            num++;
+        }
+    }
+    return num;
+}
+
 int main() {
 
     initRandomSeed();
@@ -40,15 +52,25 @@ int main() {
     createGobelins();
     seeMonsters();
 
+    int numturn = 0;
     Monsters* MonstersArray = getMonstersArray();
 
-    // 1st round
-    for (int i = 0; i < 50; i++) {
-        Monsters* player1 = getMonsterAtIndex(MonstersArray, i);
-        Monsters* player2 = getMonsterAtIndex(MonstersArray, 99-i);
-        play(player1, player2);
+    while(numAliveMonster(MonstersArray) != 1) {
+        if (numturn == 0) {
+            numturn++;
+            // 1st round different from the others
+            for (int i = 0; i < 50; i++) {
+                Monsters* player1 = getMonsterAtIndex(MonstersArray, i);
+                Monsters* player2 = getMonsterAtIndex(MonstersArray, 99-i);
+                play(player1, player2);
+            }
+            recover(MonstersArray); 
+        } else {
+            if (num)
+        }
     }
-    recover(MonstersArray); 
+
+    
 
 
     // 2nd round (50 players remaining)
@@ -80,6 +102,23 @@ int main() {
             }
         }
     }
-    setHeath(toBeEjected, -1);
+    setHealth(toBeEjected, -1);
+
+    int w = 0;
+    for (int i = 0; i < 25; i++) {
+        while (isDefeated(getMonsterAtIndex(MonstersArray, w))) {
+            w++;
+        }
+        Monsters* player1 = getMonsterAtIndex(MonstersArray, w);
+        w++;
+        while (isDefeated(getMonsterAtIndex(MonstersArray, w))) {
+            w++;
+        }
+        Monsters* player2 = getMonsterAtIndex(MonstersArray, w);
+        play(player1, player2);
+    }
+    recover(MonstersArray);
+
+    
 
 }
