@@ -66,7 +66,7 @@ int main() {
             }
             recover(MonstersArray); 
         } else {
-            if (num)
+            if (numAliveMonster(MonstersArray) % 2 == 0) {} 
         }
     }
 
