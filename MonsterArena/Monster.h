@@ -74,4 +74,12 @@ void seeAliveMonsters();
 /* Store defeated monster into the history of the winner of the battle */
 void storeMonster(Monsters* winner, Monsters* loser);
 
+
+/* Returns the health of a monster*/
+int monsterHealth(Monsters* monster);
+
+
+/* Set the health to a certain level */
+void setHeath(Monsters* monster, int hp);
+
 #endif

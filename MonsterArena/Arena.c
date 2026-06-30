@@ -3,7 +3,7 @@
 void play(Monsters* player1, Monsters* player2) {
 
     int shift = 0;
-    while(!isDefeated(player1) || !isDefeated(player2)) {
+    while(!isDefeated(player1) && !isDefeated(player2)) {
         if (shift % 2 == 0) {
             attackProcess(player1, player2);
             shift++;
@@ -45,7 +45,7 @@ int main() {
     // 1st round
     for (int i = 0; i < 50; i++) {
         Monsters* player1 = getMonsterAtIndex(MonstersArray, i);
-        Monsters* player2 = getMonsterAtIndex(MonstersArray, 100-i);
+        Monsters* player2 = getMonsterAtIndex(MonstersArray, 99-i);
         play(player1, player2);
     }
     recover(MonstersArray); 
@@ -70,16 +70,16 @@ int main() {
 
     // 3rd round (25 players remaining, one has to be ejected)
     int min = 10000;
-    Monsters* toBeEjected = NULL;
+    Monsters* toBeEjected;
     for (int i = 0; i < 100; i++) {
         Monsters* monster = getMonsterAtIndex(MonstersArray, i);
         if (!isDefeated(monster)) {
-            if (monster->health < min) {
-                min = monster->health;
+            if (monsterHealth(monster) < min) {
+                min = monsterHealth(monster);
                 toBeEjected = monster;
             }
         }
     }
-    toBeEjected->health = -1;
+    setHeath(toBeEjected, -1);
 
 }

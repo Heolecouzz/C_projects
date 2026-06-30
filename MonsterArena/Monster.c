@@ -227,3 +227,13 @@ void displayWinnerTree(Monsters* winner) {
         printf("\n");
     }
 }
+
+
+int monsterHealth(Monsters* monster) {
+    return monster->health;
+}
+
+
+void setHealth(Monsters* monster, int hp) {
+    monster->health = hp;
+}
