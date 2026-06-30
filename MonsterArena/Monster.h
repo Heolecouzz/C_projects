@@ -39,8 +39,8 @@ void attackProcess(Monsters* attacker, Monsters* victim);
 void healthRecovery(Monsters* monster);
 
 
-/* See if the monster has won or not*/
-int isDefeated(Monsters* attacker, Monsters* victim);
+/* Returns 1 if the the monster is defeated and 0 otherwise*/
+int isDefeated(Monsters* victim);
 
 
 /* Display the whole tree until the final winner */
@@ -65,5 +65,13 @@ Monsters* getMonsterAtIndex(Monsters* array, int index);
 
 /* Initialize the randomness to time */
 void initRandomSeed();
+
+
+/* We can only see Monsters that are still alived */
+void seeAliveMonsters();
+
+
+/* Store defeated monster into the history of the winner of the battle */
+void storeMonster(Monsters* winner, Monsters* loser);
 
 #endif

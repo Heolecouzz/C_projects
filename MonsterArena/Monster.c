@@ -113,6 +113,16 @@ void seeMonsters() {
 }
 
 
+void seeAliveMonsters() {
+
+    for (int i = 0; i < 100; i++) {
+        if (monstersArray[i].health > 0) {
+            printf("Type : %s // Health : %d // Damages : %d\n", monstersArray[i].type, monstersArray[i].health, monstersArray[i].damage);
+        }
+    }
+}
+
+
 void seeOneMonster(Monsters* monster) {
     printf("\nType : %s // Health : %d // Damages : %d\n", monster->type, monster->health, monster->damage);
 }
@@ -126,23 +136,31 @@ void attackProcess(Monsters* attacker, Monsters* victim) {
     if (strcmp(attacker->type, "Orks") == 0) {
         if (randNumber == 0) {
             attacker->damage *= attacker->special;
+            printf("The Orks uses its special capability !\n");
         }
     } else if (strcmp(attacker->type, "Rock Golems") == 0){
         if (randNumber == 0) {
             attacker->health *= attacker->special;
+            printf("The Rock Golems uses its special capability !\n");
         }
     } else if (strcmp(attacker->type, "Jaguarians") == 0) {
         if (randNumber == 0) {
             attacker->defense *= attacker->special;
+            printf("The Jaguarians uses its special capability !\n");
         }
     } else {
         if (randNumber == 0 || randNumber == 1 || randNumber == 2) {
             if (strcmp(victim->type, "Orks") == 0) {
                 attacker->damage *= victim->special;
+                printf("The Gobelin uses the Orks special capability !\n");
             } else if (strcmp(victim->type, "Rock Golems") == 0) {
                 attacker->health *= victim->special; 
+                printf("The Gobelin uses the Rock Golems special capability !\n");
             } else if (strcmp(victim->type, "Jaguarians") == 0) {
                 attacker->defense *= victim->special;
+                printf("The Gobelin uses the Jaguarians special capability !\n");
+            } else {
+                printf("The Gobelin cannot use its special capability against another Gobelin !\n");
             }
         }
     }
@@ -174,23 +192,30 @@ void initRandomSeed() {
 }
 
 
-int isDefeated(Monsters* attacker, Monsters* victim) {
+int isDefeated(Monsters* victim) {
 
     if (victim->health <= 0) {
-        if (attacker->defeatedHistory == NULL) {
-            attacker->defeatedCapacity = 1;
-            attacker->defeatedHistory = malloc(attacker->defeatedCapacity * sizeof(Monsters*));
-        } else {
-            attacker->defeatedCapacity++;
-            attacker->defeatedHistory = realloc(attacker->defeatedHistory, attacker->defeatedCapacity * sizeof(Monsters*));
-        }
-        
-        attacker->defeatedHistory[attacker->defeatedCount] = victim;
-        attacker->defeatedCount++;
-
         return 1;
     } 
     return 0;
+}
+
+
+
+void storeMonster(Monsters* winner, Monsters* loser) {
+
+    if (loser->health <= 0) {
+        if (winner->defeatedHistory == NULL) {
+            winner->defeatedCapacity = 1;
+            winner->defeatedHistory = malloc(winner->defeatedCapacity * sizeof(Monsters*));
+        } else {
+            winner->defeatedCapacity++;
+            winner->defeatedHistory = realloc(winner->defeatedHistory, winner->defeatedCapacity * sizeof(Monsters*));
+        }
+        
+        winner->defeatedHistory[winner->defeatedCount] = loser;
+        winner->defeatedCount++;
+    }
 }
 
 

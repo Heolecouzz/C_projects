@@ -26,14 +26,16 @@ int main() {
 
     int ShouldBe0;
 
-    ShouldBe0 = isDefeated(getMonsterAtIndex(MonstersArray, 0), getMonsterAtIndex(MonstersArray, 1));
+    ShouldBe0 = isDefeated(getMonsterAtIndex(MonstersArray, 1));
     printf("%d", ShouldBe0);
 
-    while (!isDefeated(getMonsterAtIndex(MonstersArray, 0), getMonsterAtIndex(MonstersArray, 1))) {
+    while (!isDefeated(getMonsterAtIndex(MonstersArray, 1))) {
         attackProcess(getMonsterAtIndex(MonstersArray, 0), getMonsterAtIndex(MonstersArray, 1));
     }
 
     seeOneMonster(getMonsterAtIndex(MonstersArray, 1));
+
+    storeMonster(getMonsterAtIndex(MonstersArray, 0), getMonsterAtIndex(MonstersArray, 1));
     
     displayWinnerTree(getMonsterAtIndex(MonstersArray, 0));
 
