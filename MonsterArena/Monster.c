@@ -42,9 +42,8 @@ void createOrks() {
         monster.defense = 1 - ((0 + rand() % 11) / 100);
         monster.special = 1.25;
         monster.defeatedHistory = NULL;
-        int defeatedCount = 0;
-        int defeatedCapacity = 0;
-
+        monster.defeatedCount = 0;
+        monster.defeatedCapacity = 0;
         monstersArray[k*increment] = monster;
     }
 }
@@ -62,9 +61,8 @@ void createRockGolems() {
         monster.defense = 1 - ((0 + rand() % 11) / 100);
         monster.special = 1.5;
         monster.defeatedHistory = NULL;
-        int defeatedCount = 0;
-        int defeatedCapacity = 0;
-
+        monster.defeatedCount = 0;
+        monster.defeatedCapacity = 0;
         monstersArray[1 + k*increment] = monster;
     }
 }
@@ -82,9 +80,8 @@ void createJaguarians() {
         monster.defense = 1 - ((35 + rand() % 6) / 100);
         monster.special = 1.05;
         monster.defeatedHistory = NULL;
-        int defeatedCount = 0;
-        int defeatedCapacity = 0;
-
+        monster.defeatedCount = 0;
+        monster.defeatedCapacity = 0;
         monstersArray[2 + k*increment] = monster;
     }
 }
@@ -101,9 +98,8 @@ void createGobelins() {
         monster.damage = 15 + rand() % 6;
         monster.defense = 1 - ((0 + rand() % 11) / 100);
         monster.defeatedHistory = NULL;
-        int defeatedCount = 0;
-        int defeatedCapacity = 0;
-
+        monster.defeatedCount = 0;
+        monster.defeatedCapacity = 0;
         monstersArray[3 + k*increment] = monster;
     }
 }
@@ -127,25 +123,25 @@ void attackProcess(Monsters* attacker, Monsters* victim) {
     // Specials 
     int randNumber = rand() % 9;
 
-    if (strcmp(attacker->type, "Orks")) {
+    if (strcmp(attacker->type, "Orks") == 0) {
         if (randNumber == 0) {
             attacker->damage *= attacker->special;
         }
-    } else if (strcmp(attacker->type, "Rock Golems")){
+    } else if (strcmp(attacker->type, "Rock Golems") == 0){
         if (randNumber == 0) {
             attacker->health *= attacker->special;
         }
-    } else if (strcmp(attacker->type, "Jaguarians")) {
+    } else if (strcmp(attacker->type, "Jaguarians") == 0) {
         if (randNumber == 0) {
             attacker->defense *= attacker->special;
         }
     } else {
         if (randNumber == 0 || randNumber == 1 || randNumber == 2) {
-            if (strcmp(victim->type, "Orks")) {
+            if (strcmp(victim->type, "Orks") == 0) {
                 attacker->damage *= victim->special;
-            } else if (strcmp(victim->type, "Rock Golems")) {
+            } else if (strcmp(victim->type, "Rock Golems") == 0) {
                 attacker->health *= victim->special; 
-            } else if (strcmp(victim->type, "Jaguarians")) {
+            } else if (strcmp(victim->type, "Jaguarians") == 0) {
                 attacker->defense *= victim->special;
             }
         }
@@ -191,7 +187,7 @@ int isDefeated(Monsters* attacker, Monsters* victim) {
         
         attacker->defeatedHistory[attacker->defeatedCount] = victim;
         attacker->defeatedCount++;
-        
+
         return 1;
     } 
     return 0;
@@ -200,5 +196,9 @@ int isDefeated(Monsters* attacker, Monsters* victim) {
 
 void displayWinnerTree(Monsters* winner) {
 
-    
+    for (int i = 0; i < winner->defeatedCapacity; i++) {
+        printf("%dst defeated monster :\n", i+1);
+        seeOneMonster(winner->defeatedHistory[i]);
+        printf("\n");
+    }
 }

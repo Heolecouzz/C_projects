@@ -34,11 +34,8 @@ int main() {
     }
 
     seeOneMonster(getMonsterAtIndex(MonstersArray, 1));
-
-    int ShouldBe1;
-    ShouldBe1 = isDefeated(getMonsterAtIndex(MonstersArray, 0), getMonsterAtIndex(MonstersArray, 1));
     
-    
+    displayWinnerTree(getMonsterAtIndex(MonstersArray, 0));
 
     printf("\nOkay");
 
