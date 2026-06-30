@@ -11,7 +11,9 @@ typedef struct Monsters {
     int damage;
     float defense;
     float special;
-    Monsters* defeatedMonsters;
+    struct Monsters** defeatedHistory; // Array of pointers to monsters
+    int defeatedCount; 
+    int defeatedCapacity;
 } Monsters;
 
 Monsters monstersArray[100];
@@ -24,7 +26,7 @@ void displayFeatures() {
     printf("Rock Golems :\nHealth : 1200 - 2000\nDamages : 15 - 20\nDefense : 0 - 10\%\nSpecial capability : Can regain 50\% of his health. Odds are 1/8.\n\n");
     printf("Orks :\nHealth : 300 - 500\nDamages : 45 - 80\nDefense : 0 - 10\%\nSpecial capability : Can increase his damages by 25\%. Odds are 1/8.\n\n");
     printf("Jaguarians :\nHealth : 300 - 500\nDamages : 15 - 20\nDefense : 35 - 45\%\nSpecial capability : Can increase his defense by 5\%. Odds are 1/8.\n\n");
-    printf("Gobelins :\nHealth : 300 - 500\nDamages : 15 - 20\nDefense : 0 - 10\%\nSpecial capability : Can use his opponent special capability. Odds are 3/8.\n\n");
+    printf("Gobelins :\nHealth : 300 - 500\nDamages : 15 - 20\nDefense : 0 - 10\%\nSpecial capability : Can use his opponent special capability. Odds are 3/8. If it's a gobelin fighting another one, they can't use their special capability.\n\n");
 }
 
 
@@ -39,7 +41,9 @@ void createOrks() {
         monster.damage = 45 + rand() % 36;
         monster.defense = 1 - ((0 + rand() % 11) / 100);
         monster.special = 1.25;
-        monster.defeatedMonsters = NULL;
+        monster.defeatedHistory = NULL;
+        int defeatedCount = 0;
+        int defeatedCapacity = 0;
 
         monstersArray[k*increment] = monster;
     }
@@ -57,7 +61,9 @@ void createRockGolems() {
         monster.damage = 15 + rand() % 6;
         monster.defense = 1 - ((0 + rand() % 11) / 100);
         monster.special = 1.5;
-        monster.defeatedMonsters = NULL;
+        monster.defeatedHistory = NULL;
+        int defeatedCount = 0;
+        int defeatedCapacity = 0;
 
         monstersArray[1 + k*increment] = monster;
     }
@@ -75,7 +81,9 @@ void createJaguarians() {
         monster.damage = 15 + rand() % 6;
         monster.defense = 1 - ((35 + rand() % 6) / 100);
         monster.special = 1.05;
-        monster.defeatedMonsters = NULL;
+        monster.defeatedHistory = NULL;
+        int defeatedCount = 0;
+        int defeatedCapacity = 0;
 
         monstersArray[2 + k*increment] = monster;
     }
@@ -92,7 +100,9 @@ void createGobelins() {
         monster.health = 300 + rand() % 201;
         monster.damage = 15 + rand() % 6;
         monster.defense = 1 - ((0 + rand() % 11) / 100);
-        monster.defeatedMonsters = NULL;
+        monster.defeatedHistory = NULL;
+        int defeatedCount = 0;
+        int defeatedCapacity = 0;
 
         monstersArray[3 + k*increment] = monster;
     }
@@ -168,10 +178,27 @@ void initRandomSeed() {
 }
 
 
-int isDefeated(Monsters* victim) {
-    
+int isDefeated(Monsters* attacker, Monsters* victim) {
+
     if (victim->health <= 0) {
+        if (attacker->defeatedHistory == NULL) {
+            attacker->defeatedCapacity = 1;
+            attacker->defeatedHistory = malloc(attacker->defeatedCapacity * sizeof(Monsters*));
+        } else {
+            attacker->defeatedCapacity++;
+            attacker->defeatedHistory = realloc(attacker->defeatedHistory, attacker->defeatedCapacity * sizeof(Monsters*));
+        }
+        
+        attacker->defeatedHistory[attacker->defeatedCount] = victim;
+        attacker->defeatedCount++;
+        
         return 1;
     } 
     return 0;
+}
+
+
+void displayWinnerTree(Monsters* winner) {
+
+    
 }

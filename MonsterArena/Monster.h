@@ -40,11 +40,11 @@ void healthRecovery(Monsters* monster);
 
 
 /* See if the monster has won or not*/
-int isDefeated(Monsters* victim);
+int isDefeated(Monsters* attacker, Monsters* victim);
 
 
 /* Display the whole tree until the final winner */
-void displayWinnerTree();
+void displayWinnerTree(Monsters* winner);
 
 
 /* Display the statistics of all monsters after creation*/
