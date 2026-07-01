@@ -14,6 +14,7 @@ typedef struct Monsters {
     struct Monsters** defeatedHistory; // Array of pointers to monsters
     int defeatedCount; 
     int defeatedCapacity;
+    int hasUsedSpecial;
 } Monsters;
 
 Monsters monstersArray[100];
@@ -45,6 +46,7 @@ void createOrks() {
         monster.defeatedCount = 0;
         monster.defeatedCapacity = 0;
         monstersArray[k*increment] = monster;
+        monster.hasUsedSpecial = 0;
     }
 }
 
@@ -64,6 +66,7 @@ void createRockGolems() {
         monster.defeatedCount = 0;
         monster.defeatedCapacity = 0;
         monstersArray[1 + k*increment] = monster;
+        monster.hasUsedSpecial = 0;
     }
 }
 
@@ -83,6 +86,7 @@ void createJaguarians() {
         monster.defeatedCount = 0;
         monster.defeatedCapacity = 0;
         monstersArray[2 + k*increment] = monster;
+        monster.hasUsedSpecial = 0;
     }
 }
 
@@ -101,6 +105,7 @@ void createGobelins() {
         monster.defeatedCount = 0;
         monster.defeatedCapacity = 0;
         monstersArray[3 + k*increment] = monster;
+        monster.hasUsedSpecial = 0;
     }
 }
 
@@ -115,6 +120,7 @@ void seeMonsters() {
 
 void seeAliveMonsters() {
 
+    printf("\n\n\n The monsters still alive are :\n\n");
     for (int i = 0; i < 100; i++) {
         if (monstersArray[i].health > 0) {
             printf("Type : %s // Health : %d // Damages : %d\n", monstersArray[i].type, monstersArray[i].health, monstersArray[i].damage);
@@ -124,7 +130,7 @@ void seeAliveMonsters() {
 
 
 void seeOneMonster(Monsters* monster) {
-    printf("\nType : %s // Health : %d // Damages : %d\n", monster->type, monster->health, monster->damage);
+    printf("\n\nType : %s // Health : %d // Damages : %d\n", monster->type, monster->health, monster->damage);
 }
 
 
@@ -134,32 +140,39 @@ void attackProcess(Monsters* attacker, Monsters* victim) {
     int randNumber = rand() % 9;
 
     if (strcmp(attacker->type, "Orks") == 0) {
-        if (randNumber == 0) {
+        if (randNumber == 0 && attacker->hasUsedSpecial == 0) {
             attacker->damage *= attacker->special;
+            attacker->hasUsedSpecial = 1;
             printf("The Orks uses its special capability !\n");
         }
     } else if (strcmp(attacker->type, "Rock Golems") == 0){
-        if (randNumber == 0) {
+        if (randNumber == 0 && attacker->hasUsedSpecial == 0) {
             attacker->health *= attacker->special;
+            attacker->hasUsedSpecial = 1;
             printf("The Rock Golems uses its special capability !\n");
         }
     } else if (strcmp(attacker->type, "Jaguarians") == 0) {
-        if (randNumber == 0) {
+        if (randNumber == 0 && attacker->hasUsedSpecial == 0) {
             attacker->defense *= attacker->special;
+            attacker->hasUsedSpecial = 1;
             printf("The Jaguarians uses its special capability !\n");
         }
     } else {
-        if (randNumber == 0 || randNumber == 1 || randNumber == 2) {
+        if ((randNumber == 0 || randNumber == 1 || randNumber == 2) && attacker->hasUsedSpecial == 0) {
             if (strcmp(victim->type, "Orks") == 0) {
                 attacker->damage *= victim->special;
+                attacker->hasUsedSpecial = 1;
                 printf("The Gobelin uses the Orks special capability !\n");
             } else if (strcmp(victim->type, "Rock Golems") == 0) {
                 attacker->health *= victim->special; 
+                attacker->hasUsedSpecial = 1;
                 printf("The Gobelin uses the Rock Golems special capability !\n");
             } else if (strcmp(victim->type, "Jaguarians") == 0) {
                 attacker->defense *= victim->special;
+                attacker->hasUsedSpecial = 1;
                 printf("The Gobelin uses the Jaguarians special capability !\n");
             } else {
+                attacker->hasUsedSpecial = 1;
                 printf("The Gobelin cannot use its special capability against another Gobelin !\n");
             }
         }
@@ -215,6 +228,7 @@ void storeMonster(Monsters* winner, Monsters* loser) {
         
         winner->defeatedHistory[winner->defeatedCount] = loser;
         winner->defeatedCount++;
+        winner->hasUsedSpecial = 0;
     }
 }
 
@@ -236,4 +250,14 @@ int monsterHealth(Monsters* monster) {
 
 void setHealth(Monsters* monster, int hp) {
     monster->health = hp;
+}
+
+
+int getWinnerIndex(Monsters* array) {
+
+    int i = 0;
+    while(array[i].health <= 0) {
+        i++;
+    }
+    return i;
 }

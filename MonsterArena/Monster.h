@@ -82,4 +82,8 @@ int monsterHealth(Monsters* monster);
 /* Set the health to a certain level */
 void setHealth(Monsters* monster, int hp);
 
+
+/* Returns the index of the winner */
+int getWinnerIndex(Monsters* array);
+
 #endif

@@ -1,4 +1,5 @@
 #include "Monster.h"
+#include <stdio.h>
 
 void play(Monsters* player1, Monsters* player2) {
 
@@ -55,70 +56,61 @@ int main() {
     int numturn = 0;
     Monsters* MonstersArray = getMonstersArray();
 
+    int roundDuelNumbers[5] = {25, 12, 6, 3, 1};
+    int roundDuelCount = 0;
+
     while(numAliveMonster(MonstersArray) != 1) {
         if (numturn == 0) {
             numturn++;
             // 1st round different from the others
+            printf("1st ROUND :\n\n");
             for (int i = 0; i < 50; i++) {
                 Monsters* player1 = getMonsterAtIndex(MonstersArray, i);
                 Monsters* player2 = getMonsterAtIndex(MonstersArray, 99-i);
                 play(player1, player2);
             }
             recover(MonstersArray); 
+            seeAliveMonsters();
         } else {
-            if (numAliveMonster(MonstersArray) % 2 == 0) {} 
-        }
-    }
-
-    
-
-
-    // 2nd round (50 players remaining)
-    int w = 0;
-    for (int i = 0; i < 25; i++) {
-        while (isDefeated(getMonsterAtIndex(MonstersArray, w))) {
-            w++;
-        }
-        Monsters* player1 = getMonsterAtIndex(MonstersArray, w);
-        w++;
-        while (isDefeated(getMonsterAtIndex(MonstersArray, w))) {
-            w++;
-        }
-        Monsters* player2 = getMonsterAtIndex(MonstersArray, w);
-        play(player1, player2);
-    }
-    recover(MonstersArray);
-
-
-    // 3rd round (25 players remaining, one has to be ejected)
-    int min = 10000;
-    Monsters* toBeEjected;
-    for (int i = 0; i < 100; i++) {
-        Monsters* monster = getMonsterAtIndex(MonstersArray, i);
-        if (!isDefeated(monster)) {
-            if (monsterHealth(monster) < min) {
-                min = monsterHealth(monster);
-                toBeEjected = monster;
+            if (numAliveMonster(MonstersArray) % 2 == 1) {
+                int min = 10000;
+                Monsters* toBeEjected;
+                for (int i = 0; i < 100; i++) {
+                    Monsters* monster = getMonsterAtIndex(MonstersArray, i);
+                    if (!isDefeated(monster)) {
+                        if (monsterHealth(monster) < min) {
+                            min = monsterHealth(monster);
+                            toBeEjected = monster;
+                        }
+                    }
+                }
+                setHealth(toBeEjected, -1);
             }
+            int w = 0;
+            printf("\n\n %d ROUND : \n\n", roundDuelCount + 1);
+            for (int i = 0; i < roundDuelNumbers[roundDuelCount]; i++) {
+                while (isDefeated(getMonsterAtIndex(MonstersArray, w))) {
+                    w++;
+                }
+                Monsters* player1 = getMonsterAtIndex(MonstersArray, w);
+                w++;
+                while (isDefeated(getMonsterAtIndex(MonstersArray, w))) {
+                    w++;
+                }
+                Monsters* player2 = getMonsterAtIndex(MonstersArray, w);
+                play(player1, player2);
+            }
+            recover(MonstersArray);
+            roundDuelCount++;
+
+            seeAliveMonsters();
         }
     }
-    setHealth(toBeEjected, -1);
 
-    int w = 0;
-    for (int i = 0; i < 25; i++) {
-        while (isDefeated(getMonsterAtIndex(MonstersArray, w))) {
-            w++;
-        }
-        Monsters* player1 = getMonsterAtIndex(MonstersArray, w);
-        w++;
-        while (isDefeated(getMonsterAtIndex(MonstersArray, w))) {
-            w++;
-        }
-        Monsters* player2 = getMonsterAtIndex(MonstersArray, w);
-        play(player1, player2);
-    }
-    recover(MonstersArray);
+    int winnerIndex = getWinnerIndex(MonstersArray);
 
-    
+    displayWinnerTree(getMonsterAtIndex(MonstersArray, winnerIndex));
+
+    printf("Okay");
 
 }
