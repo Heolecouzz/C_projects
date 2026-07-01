@@ -22,12 +22,12 @@ Monsters monstersArray[100];
 
 void displayFeatures() {
     
-    printf("Every monster has a type, health, damages, defense (which means it can decreased the damages received by x\%) and then a special capability that can be used once in a turn except for the gobelins.\n\n");
+    printf("Every monster has a type, health, damages, defense (which means it can decreased the damages received by x%%) and then a special capability that can be used once in a turn except for the gobelins.\n\n");
     printf("There's 4 types of monsters : Rock Golems (focused on health), Orks (focused on damages), Jaguarians (focused on defense) and Gobelins (focus on Special capability).\n\n");
-    printf("Rock Golems :\nHealth : 800 - 1200\nDamages : 15 - 20\nDefense : 0 - 10\%\nSpecial capability : Can regain 50\% of his health. Odds are 1/8.\n\n");
-    printf("Orks :\nHealth : 300 - 500\nDamages : 25 - 60\nDefense : 0 - 10\%\nSpecial capability : Can increase his damages by 25\%. Odds are 1/8.\n\n");
-    printf("Jaguarians :\nHealth : 300 - 500\nDamages : 15 - 20\nDefense : 60 - 65\%\nSpecial capability : Can increase his defense by 5\%. Odds are 1/8.\n\n");
-    printf("Gobelins :\nHealth : 300 - 500\nDamages : 15 - 20\nDefense : 0 - 10\%\nSpecial capability : Can use his opponent special capability. Odds are 3/8. If it's a gobelin fighting another one, they can't use their special capability.\n\n");
+    printf("Rock Golems :\nHealth : 800 - 1200\nDamages : 15 - 20\nDefense : 0 - 10%%\nSpecial capability : Can regain 50%% of his health. Odds are 1/8.\n\n");
+    printf("Orks :\nHealth : 300 - 500\nDamages : 25 - 60\nDefense : 0 - 10%%\nSpecial capability : Can increase his damages by 25%%. Odds are 1/8.\n\n");
+    printf("Jaguarians :\nHealth : 300 - 500\nDamages : 15 - 20\nDefense : 60 - 65%%\nSpecial capability : Can increase his defense by 5%%. Odds are 1/8.\n\n");
+    printf("Gobelins :\nHealth : 300 - 500\nDamages : 15 - 20\nDefense : 0 - 10%%\nSpecial capability : Can use his opponent special capability. Odds are 3/8. If it's a gobelin fighting another one, they can't use their special capability.\n\n");
 }
 
 
@@ -232,7 +232,7 @@ void storeMonster(Monsters* winner, Monsters* loser) {
 void displayWinnerTree(Monsters* winner) {
 
     for (int i = 0; i < winner->defeatedCapacity; i++) {
-        printf("%dst defeated monster :\n", i+1);
+        printf("%dth defeated monster :\n", i+1);
         seeOneMonster(winner->defeatedHistory[i]);
     }
 }
