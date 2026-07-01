@@ -130,7 +130,7 @@ void seeAliveMonsters() {
 
 
 void seeOneMonster(Monsters* monster) {
-    printf("\n\nType : %s // Health : %d // Damages : %d\n", monster->type, monster->health, monster->damage);
+    printf("\nType : %s // Health : %d // Damages : %d\n", monster->type, monster->health, monster->damage);
 }
 
 
@@ -139,7 +139,7 @@ void attackProcess(Monsters* attacker, Monsters* victim) {
     // Specials 
     int randNumber = rand() % 9;
 
-    if (strcmp(attacker->type, "Orks") == 0) {
+    if (strcmp(attacker->type, "Ork") == 0) {
         if (randNumber == 0 && attacker->hasUsedSpecial == 0) {
             attacker->damage *= attacker->special;
             attacker->hasUsedSpecial = 1;
@@ -159,7 +159,7 @@ void attackProcess(Monsters* attacker, Monsters* victim) {
         }
     } else {
         if ((randNumber == 0 || randNumber == 1 || randNumber == 2) && attacker->hasUsedSpecial == 0) {
-            if (strcmp(victim->type, "Orks") == 0) {
+            if (strcmp(victim->type, "Ork") == 0) {
                 attacker->damage *= victim->special;
                 attacker->hasUsedSpecial = 1;
                 printf("The Gobelin uses the Orks special capability !\n");
@@ -238,7 +238,6 @@ void displayWinnerTree(Monsters* winner) {
     for (int i = 0; i < winner->defeatedCapacity; i++) {
         printf("%dst defeated monster :\n", i+1);
         seeOneMonster(winner->defeatedHistory[i]);
-        printf("\n");
     }
 }
 

@@ -73,7 +73,7 @@ int main() {
             seeAliveMonsters();
         } else {
             if (numAliveMonster(MonstersArray) % 2 == 1) {
-                int min = 10000;
+                int min = 1000000;
                 Monsters* toBeEjected;
                 for (int i = 0; i < 100; i++) {
                     Monsters* monster = getMonsterAtIndex(MonstersArray, i);
