@@ -29,7 +29,7 @@ make
 
 ## Usage :
 ```bash
-./MonsterArena
+./ConnectFour
 ```
 
 ## Technical notes :
