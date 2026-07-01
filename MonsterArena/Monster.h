@@ -86,4 +86,8 @@ void setHealth(Monsters* monster, int hp);
 /* Returns the index of the winner */
 int getWinnerIndex(Monsters* array);
 
+
+/* Returns the history of the monster*/
+struct Monsters** getHistory(Monsters* monster);
+
 #endif

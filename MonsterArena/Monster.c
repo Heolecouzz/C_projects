@@ -22,11 +22,11 @@ Monsters monstersArray[100];
 
 void displayFeatures() {
     
-    printf("Every monster has a type, health, damages, defense (which means it can decreased the damages received by x\%) and then a special capability.\n\n");
+    printf("Every monster has a type, health, damages, defense (which means it can decreased the damages received by x\%) and then a special capability that can be used once in a turn except for the gobelins.\n\n");
     printf("There's 4 types of monsters : Rock Golems (focused on health), Orks (focused on damages), Jaguarians (focused on defense) and Gobelins (focus on Special capability).\n\n");
-    printf("Rock Golems :\nHealth : 1200 - 2000\nDamages : 15 - 20\nDefense : 0 - 10\%\nSpecial capability : Can regain 50\% of his health. Odds are 1/8.\n\n");
-    printf("Orks :\nHealth : 300 - 500\nDamages : 45 - 80\nDefense : 0 - 10\%\nSpecial capability : Can increase his damages by 25\%. Odds are 1/8.\n\n");
-    printf("Jaguarians :\nHealth : 300 - 500\nDamages : 15 - 20\nDefense : 35 - 45\%\nSpecial capability : Can increase his defense by 5\%. Odds are 1/8.\n\n");
+    printf("Rock Golems :\nHealth : 800 - 1200\nDamages : 15 - 20\nDefense : 0 - 10\%\nSpecial capability : Can regain 50\% of his health. Odds are 1/8.\n\n");
+    printf("Orks :\nHealth : 300 - 500\nDamages : 25 - 60\nDefense : 0 - 10\%\nSpecial capability : Can increase his damages by 25\%. Odds are 1/8.\n\n");
+    printf("Jaguarians :\nHealth : 300 - 500\nDamages : 15 - 20\nDefense : 60 - 65\%\nSpecial capability : Can increase his defense by 5\%. Odds are 1/8.\n\n");
     printf("Gobelins :\nHealth : 300 - 500\nDamages : 15 - 20\nDefense : 0 - 10\%\nSpecial capability : Can use his opponent special capability. Odds are 3/8. If it's a gobelin fighting another one, they can't use their special capability.\n\n");
 }
 
@@ -39,7 +39,7 @@ void createOrks() {
         Monsters monster;
         monster.type = "Ork";
         monster.health = 300 + rand() % 201;
-        monster.damage = 45 + rand() % 36;
+        monster.damage = 25 + rand() % 36;
         monster.defense = 1 - ((0 + rand() % 11) / 100);
         monster.special = 1.25;
         monster.defeatedHistory = NULL;
@@ -58,10 +58,10 @@ void createRockGolems() {
     for (int k = 0; k < 25; k++) {
         Monsters monster;
         monster.type = "Rock Golems";
-        monster.health = 1200 + rand() % 801;
+        monster.health = 600 + rand() % 401;
         monster.damage = 15 + rand() % 6;
         monster.defense = 1 - ((0 + rand() % 11) / 100);
-        monster.special = 1.5;
+        monster.special = 1.25;
         monster.defeatedHistory = NULL;
         monster.defeatedCount = 0;
         monster.defeatedCapacity = 0;
@@ -80,7 +80,7 @@ void createJaguarians() {
         monster.type = "Jaguarians";
         monster.health = 300 + rand() % 201;
         monster.damage = 15 + rand() % 6;
-        monster.defense = 1 - ((35 + rand() % 6) / 100);
+        monster.defense = 1 - ((60 + rand() % 6) / 100);
         monster.special = 1.05;
         monster.defeatedHistory = NULL;
         monster.defeatedCount = 0;
@@ -161,18 +161,14 @@ void attackProcess(Monsters* attacker, Monsters* victim) {
         if ((randNumber == 0 || randNumber == 1 || randNumber == 2) && attacker->hasUsedSpecial == 0) {
             if (strcmp(victim->type, "Ork") == 0) {
                 attacker->damage *= victim->special;
-                attacker->hasUsedSpecial = 1;
                 printf("The Gobelin uses the Orks special capability !\n");
             } else if (strcmp(victim->type, "Rock Golems") == 0) {
                 attacker->health *= victim->special; 
-                attacker->hasUsedSpecial = 1;
                 printf("The Gobelin uses the Rock Golems special capability !\n");
             } else if (strcmp(victim->type, "Jaguarians") == 0) {
                 attacker->defense *= victim->special;
-                attacker->hasUsedSpecial = 1;
                 printf("The Gobelin uses the Jaguarians special capability !\n");
             } else {
-                attacker->hasUsedSpecial = 1;
                 printf("The Gobelin cannot use its special capability against another Gobelin !\n");
             }
         }
@@ -259,4 +255,9 @@ int getWinnerIndex(Monsters* array) {
         i++;
     }
     return i;
+}
+
+
+struct Monsters** getHistory(Monsters* monster) {
+    return monster->defeatedHistory;
 }

@@ -1,5 +1,6 @@
 #include "Monster.h"
 #include <stdio.h>
+#include <stdlib.h>
 
 void play(Monsters* player1, Monsters* player2) {
 
@@ -40,6 +41,20 @@ int numAliveMonster(Monsters* MonsterArray) {
         }
     }
     return num;
+}
+
+
+void cleanUpTournament(Monsters* MonstersArray, int totalMonsters) {
+    for (int i = 0; i < totalMonsters; i++) {
+        Monsters* monster = getMonsterAtIndex(MonstersArray, i);
+        
+        if (monster != NULL) {
+            struct Monsters** History = getHistory(monster);
+            if (History != NULL) {
+                free(History);
+            }
+        }
+    }
 }
 
 int main() {
@@ -110,6 +125,8 @@ int main() {
     int winnerIndex = getWinnerIndex(MonstersArray);
 
     displayWinnerTree(getMonsterAtIndex(MonstersArray, winnerIndex));
+
+    cleanUpTournament(MonstersArray, 100);
 
     printf("Okay");
 
