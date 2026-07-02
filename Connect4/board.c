@@ -1,5 +1,6 @@
 #include "board.h"
 #include <stdio.h>
+#include "player.h"
 
 token board[6][7];
 
@@ -30,7 +31,7 @@ void createInitialBoard(token board[6][7], int rows, int columns) {
 }
 
 
-void addToken(token board[6][7], int rows, int columns, int tokenRow, int tokenCol, Player player) {
-    board[tokenRow - 1][tokenCol - 1].playerToken = player.token;
-    board[tokenRow - 1][tokenCol - 1].player = player.numPlayer;
+void addToken(token board[6][7], int rows, int columns, int tokenRow, int tokenCol, Player* player) {
+    board[tokenRow - 1][tokenCol - 1].playerToken = getPlayerToken(player);
+    board[tokenRow - 1][tokenCol - 1].player = getPlayerID(player);
 }
