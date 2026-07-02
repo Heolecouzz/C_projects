@@ -6,8 +6,6 @@ typedef struct token {
     char playerToken;
 } token;
 
-token board[6][7];
-
 typedef struct Player Player;
 
 
