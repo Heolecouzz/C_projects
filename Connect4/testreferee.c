@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include "board.h"
 #include "player.h"
+#include <assert.h>
 
 void HorizontallyWinningBoard1(token board[6][7], Player* player1) {
 
@@ -204,6 +205,38 @@ void LeftHorizontallyWinningBoard5(token board[6][7], Player* player1) {
     displayBoard(board, 6, 7);
 }
 
+void TestGetLastRowPlayable(token board[6][7], Player* player1) {
+
+    addToken(board, 6, 7, 1, 1, player1);
+    addToken(board, 6, 7, 2, 1, player1);
+    addToken(board, 6, 7, 3, 1, player1);
+    addToken(board, 6, 7, 4, 1, player1);
+    addToken(board, 6, 7, 5, 1, player1);
+    addToken(board, 6, 7, 6, 1, player1);
+
+    addToken(board, 6, 7, 1, 2, player1);
+    addToken(board, 6, 7, 2, 2, player1);
+    addToken(board, 6, 7, 3, 2, player1);
+    addToken(board, 6, 7, 4, 2, player1);
+    addToken(board, 6, 7, 5, 2, player1);
+
+    addToken(board, 6, 7, 1, 3, player1);
+    addToken(board, 6, 7, 2, 3, player1);
+    addToken(board, 6, 7, 3, 3, player1);
+    addToken(board, 6, 7, 4, 3, player1);
+
+    addToken(board, 6, 7, 1, 4, player1);
+    addToken(board, 6, 7, 2, 4, player1);
+    addToken(board, 6, 7, 3, 4, player1);
+
+    addToken(board, 6, 7, 1, 5, player1);
+    addToken(board, 6, 7, 2, 5, player1);
+
+    addToken(board, 6, 7, 1, 6, player1);
+
+    displayBoard(board, 6, 7);
+}
+
 
 
 int main() {
@@ -307,5 +340,17 @@ int main() {
     LeftHorizontallyWinningBoard5(board, player1);
     ShouldBeTrue = hasWon(player1, board);
 
+    createInitialBoard(board, 6, 7);
+    TestGetLastRowPlayable(board, player1);
+    assert(getLastRowPlayable(board, 0) == -1);
+    assert(getLastRowPlayable(board, 1) == 5);
+    assert(getLastRowPlayable(board, 2) == 4);
+    assert(getLastRowPlayable(board, 3) == 3);
+    assert(getLastRowPlayable(board, 4) == 2);
+    assert(getLastRowPlayable(board, 5) == 1);
+    assert(getLastRowPlayable(board, 6) == 0);
 
+
+    printf("ALL TESTS PASSED SUCESSFULLY !!");
+    return 1;
 }

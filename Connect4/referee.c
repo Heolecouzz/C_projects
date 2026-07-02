@@ -5,7 +5,7 @@
 
 int getLastRowPlayable(token board[6][7], int colNumber) {
 
-    for (int i = 5; i >= 0; i--) {
+    for (int i = 0; i < 6; i++) {
         if (board[i][colNumber].playerToken == ' ') {
             return i;
         }
