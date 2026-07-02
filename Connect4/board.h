@@ -1,5 +1,7 @@
 /* This module lists all the methods of the board game */
 
+#include "player.h"
+
 #ifndef BOARD_H
 #define BOARD_H
 
@@ -17,8 +19,8 @@ void displayBoard(token board[6][7], int rows, int columns);
 void createInitialBoard(token board[6][7], int rows, int columns);
 
 
-/* Add a token to the board game */
-void addToken(token board[6][7], int rows, int columns, int tokenRow, int tokenCol);
+/* Add a token to the board game. */
+void addToken(token board[6][7], int rows, int columns, int tokenRow, int tokenCol, Player player);
 
 
 #endif

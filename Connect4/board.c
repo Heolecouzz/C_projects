@@ -24,6 +24,13 @@ void createInitialBoard(token board[6][7], int rows, int columns) {
     for (int i = 0; i < 6; i++) {
         for (int j = 0; j < 7; j++) {
             board[i][j].playerToken = ' ';
+            board[i][j].player = 0;
         }
     }
+}
+
+
+void addToken(token board[6][7], int rows, int columns, int tokenRow, int tokenCol, Player player) {
+    board[tokenRow - 1][tokenCol - 1].playerToken = player.token;
+    board[tokenRow - 1][tokenCol - 1].player = player.numPlayer;
 }
