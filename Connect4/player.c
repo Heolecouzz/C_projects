@@ -27,10 +27,12 @@ int getPlayerID(Player* player) {
 
 void setPlayerID(Player* player, int ID) {
 
-    if (ID != 1 || ID != 2) {
-        printf("The ID given to the player must be either 1 or 2");
+    if (ID == 1 || ID == 2) {
+        player->numPlayer = ID;
+    } else {
+        printf("The ID given to the player must be either 1 or 2\n\n");
     }
-    player->numPlayer = ID;
+    
 }
 
 
