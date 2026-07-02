@@ -351,6 +351,7 @@ int main() {
     assert(getLastRowPlayable(board, 6) == 0);
 
 
+    freeMemory(player1);
     printf("ALL TESTS PASSED SUCESSFULLY !!");
     return 1;
 }
