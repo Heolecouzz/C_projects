@@ -32,6 +32,6 @@ void createInitialBoard(token board[6][7], int rows, int columns) {
 
 
 void addToken(token board[6][7], int rows, int columns, int tokenRow, int tokenCol, Player* player) {
-    board[tokenRow - 1][tokenCol - 1].playerToken = getPlayerToken(player);
-    board[tokenRow - 1][tokenCol - 1].player = getPlayerID(player);
+    board[tokenRow][tokenCol].playerToken = getPlayerToken(player);
+    board[tokenRow][tokenCol].player = getPlayerID(player);
 }

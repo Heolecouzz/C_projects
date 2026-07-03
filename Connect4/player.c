@@ -69,7 +69,7 @@ int playTokenColumn(Player* player) {
     // Human players
     if (player->numPlayer == 1) {
         do {
-            printf("In which column do you want to play ? > ");
+            printf("%s, in which column do you want to play ? > ", player->name);
             int result = scanf("%d", &column);
             printf("\n");
             if (result != 1) {
