@@ -14,7 +14,7 @@ char* getPlayerName(Player* player);
 void setPlayerName(Player* player, char* name);
 
 
-/* Return the ID of the player given */
+/* Return the ID of the player given. 1 means the player is Human and 2 means the player is a computer */
 int getPlayerID(Player* player);
 
 
