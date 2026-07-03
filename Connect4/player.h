@@ -38,4 +38,8 @@ Player* createPlayer(char* name, char token, int id);
 void freeMemory(Player* player);
 
 
+/* Returns the column where the player wants to play */
+int playTokenColumn(Player* player);
+
+
 #endif

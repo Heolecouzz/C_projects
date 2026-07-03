@@ -61,3 +61,24 @@ Player* createPlayer(char* name, char token, int id) {
 void freeMemory(Player* player) {
     free(player);
 } 
+
+
+int playTokenColumn(Player* player) {
+
+    int column;
+    // Human players
+    if (player->numPlayer == 1) {
+        do {
+            printf("In which column do you want to play ? > ");
+            int result = scanf("%d", &column);
+            printf("\n");
+            if (result != 1) {
+                while(getchar() != '\n');
+            }
+            if (column != 1 && column != 2 && column != 3 && column != 4 && column != 5 && column != 6 && column != 7) {
+                printf("The number given must be between 1 and 7 included !\n");
+            }
+        } while (column != 1 && column != 2 && column != 3 && column != 4 && column != 5 && column != 6 && column != 7);
+        return column - 1;
+    }
+} // Bot players (TODO)

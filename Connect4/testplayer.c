@@ -1,5 +1,6 @@
 #include "player.h"
 #include <stdio.h>
+#include <assert.h>
 
 
 int main() {
@@ -21,6 +22,12 @@ int main() {
     setPlayerID(myplayer, 2);
 
     printf("The player's named %s has the token %c and his id is %d\n\n", getPlayerName(myplayer), getPlayerToken(myplayer), getPlayerID(myplayer));
+
+    setPlayerID(myplayer, 1);
+
+    int column;
+    column = playTokenColumn(myplayer);
+    printf("%d", column);
 
     freeMemory(myplayer);
 
