@@ -1,9 +1,14 @@
 #include "player.h"
+#include "board.h"
 #include <stdio.h>
 #include <assert.h>
 
 
 int main() {
+
+    token board[6][7];
+
+    createInitialBoard(board, 6, 7);
 
     Player* myplayer = createPlayer("James", 'O', 1);
 
@@ -26,10 +31,13 @@ int main() {
     setPlayerID(myplayer, 1);
 
     int column;
-    column = playTokenColumn(myplayer);
+    column = playTokenColumn(myplayer, board);
     printf("%d", column);
 
+    Player* computer = createPlayer("Computer", 'X', 2);
+
     freeMemory(myplayer);
+    freeMemory(computer);
 
     return 1;
 }

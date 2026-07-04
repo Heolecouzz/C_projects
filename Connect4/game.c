@@ -75,9 +75,9 @@ int main() {
     while (win == 0) {
         do {
             if (shift % 2 == 0) {
-                column = playTokenColumn(player1);
+                column = playTokenColumn(player1, board);
             } else {
-                column = playTokenColumn(player2);
+                column = playTokenColumn(player2, board);
             }
             columnPlayable = getLastRowPlayable(board, column);
             if (columnPlayable == -1) {

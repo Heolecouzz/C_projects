@@ -5,6 +5,11 @@
 
 typedef struct Player Player;
 
+typedef struct token {
+    int player;
+    char playerToken;
+} token;
+
 
 /* Return the name of the player given */
 char* getPlayerName(Player* player);
@@ -39,7 +44,7 @@ void freeMemory(Player* player);
 
 
 /* Returns the column where the player wants to play */
-int playTokenColumn(Player* player);
+int playTokenColumn(Player* player, token boad[6][7]);
 
 
 #endif
