@@ -1,7 +1,16 @@
-100 Monster Arena -> In progress
+100 Monster Arena -> Done
+Connect 4 -> Almost Done
 Snake
 Minesweeper
 Tetris
+BlackJack
 Pokémon Battle Simulator
 Dungeon Generator
 Tiny Roguelike
+ASCII Space Invaders
+Sudoku Generator + Solver
+
+
+Snake — event loops, architecture, dynamic state.
+Sudoku Generator + Solver — recursion, backtracking, algorithmic thinking.
+Mini Shell (replace Tiny Roguelike if your goal is cybersecurity rather than games) — processes,
