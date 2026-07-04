@@ -11,7 +11,6 @@ int main() {
     char* name2 = malloc(25 * sizeof(char));
     char token1, token2;
     int id1, id2;
-    int result;
 
     // First player
     printf("Welcome to this ConnectFour board game.\n");
@@ -63,7 +62,7 @@ int main() {
 
     // Creation of the initial board
     token board[6][7];
-    createInitialBoard(board, 6, 7);
+    createInitialBoard(board);
 
     // GAME !
     printf("\n\nSTART OF THE GAME !\n\n");
@@ -85,10 +84,10 @@ int main() {
             }
         } while (columnPlayable == -1);
         if (shift % 2 == 0) {
-            addToken(board, 6, 7, columnPlayable, column, player1);
+            addToken(board, columnPlayable, column, player1);
             win = hasWon(player1, board);
         } else {
-            addToken(board, 6, 7, columnPlayable, column, player2);
+            addToken(board, columnPlayable, column, player2);
             win = hasWon(player2, board);
         }
         shift++;

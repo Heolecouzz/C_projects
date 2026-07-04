@@ -21,7 +21,7 @@ void displayBoard(token board[6][7], int rows, int columns) {
     printf("\n");
 }
 
-void createInitialBoard(token board[6][7], int rows, int columns) {
+void createInitialBoard(token board[6][7]) {
     for (int i = 0; i < 6; i++) {
         for (int j = 0; j < 7; j++) {
             board[i][j].playerToken = ' ';
@@ -31,7 +31,7 @@ void createInitialBoard(token board[6][7], int rows, int columns) {
 }
 
 
-void addToken(token board[6][7], int rows, int columns, int tokenRow, int tokenCol, Player* player) {
+void addToken(token board[6][7], int tokenRow, int tokenCol, Player* player) {
     board[tokenRow][tokenCol].playerToken = getPlayerToken(player);
     board[tokenRow][tokenCol].player = getPlayerID(player);
 }

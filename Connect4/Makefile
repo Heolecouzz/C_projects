@@ -4,7 +4,7 @@ CFLAGS = -Wall -Wextra -Werror -g
 
 TARGET = ConnectFour
 
-OBJ = ...
+OBJ = player.o referee.o board.o game.o
 
 all : $(TARGET)
 

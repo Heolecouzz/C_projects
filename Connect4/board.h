@@ -16,11 +16,11 @@ void displayBoard(token board[6][7], int rows, int columns);
 
 
 /* Initialize the board with empty spaces */
-void createInitialBoard(token board[6][7], int rows, int columns);
+void createInitialBoard(token board[6][7]);
 
 
 /* Add a token to the board game. */
-void addToken(token board[6][7], int rows, int columns, int tokenRow, int tokenCol, Player* player);
+void addToken(token board[6][7], int tokenRow, int tokenCol, Player* player);
 
 
 #endif
