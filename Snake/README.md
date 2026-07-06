@@ -1,0 +1,56 @@
+# CONNECT FOUR  
+![C](https://img.shields.io/badge/language-C-blue.svg)
+![License](https://img.shields.io/badge/license-MIT-green.svg)
+
+A terminal Snake game written in C. 
+## Learning objectives
+
+This project was developed to strengthen my understanding of:
+
+- 2D arrays
+- Modular programming
+- Build automation using Make
+
+## Features : 
+
+## Prerequisites :
+- gcc
+
+## Build :
+```bash
+make
+```
+
+## Usage :
+```bash
+./Snake
+```
+
+## Technical notes :
+- Memory usage has been verified with Valgrind to ensure no memory leaks during normal execution.
+- Compiled with -Wall -Wextra -Werror -g.
+- Here's the structure of the project :
+```text
+
+```
+
+## Skills demonstrated :
+
+- C programming
+- 2D array manipulation
+- Game logic implementation
+- Modular software architecture
+- Build automation using Make
+- Memory management
+
+
+## Future improvements :
+
+
+
+## Lessons Learned
+
+During this project I learned:
+
+
+## Example :
