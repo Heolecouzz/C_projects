@@ -155,18 +155,42 @@ int getSnakeLength(Snake* snake) {
 }
 
 // Todo : If the direction isn't east, the display isn't accurate !
-void displaySnakeHead() {
-    printf("oo:  ");
+void displaySnakeHead(Snake* snake, Directions direction) {
+    if (direction == EAST) {
+        printf(">>:  ");
+    } else if (direction == WEST) {
+        printf("  :<<");
+    } else if (direction == NORTH) {
+        printf("  ^  ");
+    } else {
+        printf("v");
+    }
 }
 
 
-void displaySnakeBody() {
-    printf("ooooo");
+void displaySnakeBody(Snake* snake, Directions direction) {
+    if (direction == EAST) {
+        printf(">>>>>");
+    } else if (direction == WEST) {
+        printf("<<<<<");
+    } else if (direction == NORTH) {
+        printf("  ^  ");
+    } else {
+        printf("v");
+    }
 }
 
 
-void displaySnakeQueue() {
-    printf("  -oo");
+void displaySnakeQueue(Snake* snake, Directions direction) {
+    if (direction == EAST) {
+        printf("  >>>");
+    } else if (direction == WEST) {
+        printf("<<<  ");
+    } else if (direction == NORTH) {
+        printf("  ^  ");
+    } else {
+        printf("v");
+    }
 }
 
 

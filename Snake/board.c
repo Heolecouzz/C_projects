@@ -46,11 +46,11 @@ void displayBoard(Case board[17][19], Apple* apple, Snake* snake) {
                 SnakePart part = getSnakePart(snake, index);
                 printf("|");
                 if (part == HEAD) {
-                    displaySnakeHead();
+                    displaySnakeHead(snake);
                 } else if (part == BODY) {
-                    displaySnakeBody();
+                    displaySnakeBody(snake);
                 } else {
-                    displaySnakeQueue();
+                    displaySnakeQueue(snake);
                 }
             } else if (board[i][j].hasApple == 1) {
                 printf("|  A  ");

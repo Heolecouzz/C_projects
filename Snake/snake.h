@@ -70,15 +70,15 @@ int getSnakeLength(Snake* snake);
 
 
 /* Display the head of the snake */
-void displaySnakeHead();
+void displaySnakeHead(Snake* snake, Directions direction);
 
 
 /* Display the body of the snake */
-void displaySnakeBody();
+void displaySnakeBody(Snake* snake, Directions direction);
 
 
 /* Display the queue of the snake */
-void displaySnakeQueue();
+void displaySnakeQueue(Snake* snake, Directions direction);
 
 
 /* The user gives the row and the column and returns corresponding to the coordonates. Returns -1 if it doesn't exist */
