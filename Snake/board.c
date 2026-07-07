@@ -44,13 +44,14 @@ void displayBoard(Case board[17][19], Apple* apple, Snake* snake) {
             } else if (board[i][j].hasSnake == 1) {
                 int index = boardToSnakeIndex(snake, j, i);
                 SnakePart part = getSnakePart(snake, index);
+                Directions direction = getDirection(snake, index);
                 printf("|");
                 if (part == HEAD) {
-                    displaySnakeHead(snake);
+                    displaySnakeHead(snake, direction);
                 } else if (part == BODY) {
-                    displaySnakeBody(snake);
+                    displaySnakeBody(snake, direction);
                 } else {
-                    displaySnakeQueue(snake);
+                    displaySnakeQueue(snake, direction);
                 }
             } else if (board[i][j].hasApple == 1) {
                 printf("|  A  ");
@@ -61,4 +62,18 @@ void displayBoard(Case board[17][19], Apple* apple, Snake* snake) {
         printf("|\n");
     }
     printf("- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n");
+}
+
+
+void setHasSnake(Case board[17][19], int row, int column, int number) {
+    if (number != 1 && number != 0) {
+        board[row][column].hasSnake = number;
+    }
+}
+
+
+void setHasSnake(Case board[17][19], int row, int column, int number) {
+    if (number != 1 && number != 0) {
+        board[row][column].hasApple = number;
+    }
 }
