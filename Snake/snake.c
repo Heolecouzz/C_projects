@@ -154,7 +154,7 @@ int getSnakeLength(Snake* snake) {
     return length;
 }
 
-// Todo : If the direction isn't east, the display isn't accurate !
+
 void displaySnakeHead(Snake* snake, Directions direction) {
     if (direction == EAST) {
         printf(">>:  ");
