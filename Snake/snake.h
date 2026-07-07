@@ -80,4 +80,8 @@ void displaySnakeBody();
 /* Display the queue of the snake */
 void displaySnakeQueue();
 
+
+/* The user gives the row and the column and returns corresponding to the coordonates. Returns -1 if it doesn't exist */
+int boardToSnakeIndex(Snake* snake, int coordx, int coordy);
+
 #endif

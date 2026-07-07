@@ -1,13 +1,18 @@
 #include "board.h"
+#include "apples.h"
+#include "snake.h"
 #include <stdio.h>
 
 int main() {
 
     Case SnakeBoard[17][19];
 
-    createBoard(SnakeBoard);
+    Apple* apple = initApple();
+    Snake* snake = initializeSnake();
 
-    displayBoard(SnakeBoard);
+    createBoard(SnakeBoard, apple, snake);
+
+    displayBoard(SnakeBoard, apple, snake);
 
     return 1;
 }

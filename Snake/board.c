@@ -1,10 +1,13 @@
 #include "board.h"
 #include <stdio.h>
+#include "snake.h"
+#include "apples.h"
 
 
 
-void createBoard(Case board[17][19]) {
+void createBoard(Case board[17][19], Apple* apple, Snake* snake) {
 
+    // Create edges
     for (int j = 0; j < 19; j++) {
         board[0][j].isEdge = 1;
         board[16][j].isEdge = 1;
@@ -18,22 +21,44 @@ void createBoard(Case board[17][19]) {
     for (int i = 1; i < 16; i++) {
         for (int j = 1; j < 18; j++) {
             board[i][j].isEdge = 0;
+            board[i][j].hasApple = 0;
+            board[i][j].hasSnake = 0;
         }
+    }
+
+    // Place the first Apple
+    board[getCordyApple(apple)][getCordxApple(apple)].hasApple = 1;
+    // Place the snake at the beginning
+    for (int i = 2; i < 5; i++) {
+        board[8][i].hasSnake = 1;
     }
 }
 
-void displayBoard(Case board[17][19]) {
+void displayBoard(Case board[17][19], Apple* apple, Snake* snake) {
 
-    for (int i = 17 - 1; i >= 0; i--) {
-        printf("- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - \n");
-        for (int j = 0; j < 19; j++) {
+    for (int i = 15; i > 0; i--) {
+        printf("- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - \n");
+        for (int j = 1; j < 18; j++) {
             if (board[i][j].isEdge == 1) {
                 printf("| XXX ");
+            } else if (board[i][j].hasSnake == 1) {
+                int index = boardToSnakeIndex(snake, j, i);
+                SnakePart part = getSnakePart(snake, index);
+                printf("|");
+                if (part == HEAD) {
+                    displaySnakeHead();
+                } else if (part == BODY) {
+                    displaySnakeBody();
+                } else {
+                    displaySnakeQueue();
+                }
+            } else if (board[i][j].hasApple == 1) {
+                printf("|  A  ");
             } else {
                 printf("|     ");
             }
         }
         printf("|\n");
     }
-    printf("- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n");
+    printf("- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n");
 }

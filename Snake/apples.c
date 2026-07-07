@@ -16,8 +16,8 @@ Apple* initApple() {
 
     Apple* apple = malloc(sizeof(Apple));
 
-    apple->coordx = 7;
-    apple->coordy = 13;
+    apple->coordx = 13;
+    apple->coordy = 8;
     apple->hasBeenTouched = 0;
 
     return apple;

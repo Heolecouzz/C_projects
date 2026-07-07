@@ -1,5 +1,8 @@
 /* This module handles the apple */
 
+#ifndef APPLES_H
+#define APPLES_H
+
 typedef struct Apple Apple;
 
 /* Initialize the apple and returns it */
@@ -28,3 +31,6 @@ void setTouchedField(Apple* apple, int number);
 
 /* Get the touched field */
 int getTouchedField(Apple* apple);
+
+
+#endif

@@ -17,20 +17,20 @@ Snake* initializeSnake() {
 
     snake[0].snakeBlock = HEAD;
     snake[0].direction = EAST;
-    snake[0].Cordy = 4;
-    snake[0].Cordx = 8;
+    snake[0].Cordy = 8;
+    snake[0].Cordx = 4;
     snake[0].allowcated = 1;
 
     snake[1].snakeBlock = BODY;
     snake[1].direction = EAST;
-    snake[1].Cordy = 3;
-    snake[1].Cordx = 8;
+    snake[1].Cordy = 8;
+    snake[1].Cordx = 3;
     snake[1].allowcated = 1;
 
     snake[2].snakeBlock = QUEUE;
     snake[2].direction = EAST;
-    snake[2].Cordy = 2;
-    snake[2].Cordx = 8;
+    snake[2].Cordy = 8;
+    snake[2].Cordx = 2;
     snake[2].allowcated = 1;
 
     for (int j = 4; j < 255; j++) {
@@ -154,7 +154,7 @@ int getSnakeLength(Snake* snake) {
     return length;
 }
 
-
+// Todo : If the direction isn't east, the display isn't accurate !
 void displaySnakeHead() {
     printf("oo:  ");
 }
@@ -166,5 +166,18 @@ void displaySnakeBody() {
 
 
 void displaySnakeQueue() {
-    printf("-oo");
+    printf("  -oo");
+}
+
+
+int boardToSnakeIndex(Snake* snake, int coordx, int coordy) {
+
+    int i = 0;
+    while (i < 255 && snake[i].allowcated == 1) {
+        if (snake[i].Cordx == coordx && snake[i].Cordy == coordy) {
+            return i;
+        } 
+        i++;
+    }
+    return -1;
 }
