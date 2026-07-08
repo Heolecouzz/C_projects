@@ -163,7 +163,7 @@ void displaySnakeHead(Snake* snake, Directions direction) {
     } else if (direction == NORTH) {
         printf("  ^  ");
     } else {
-        printf("v");
+        printf("  v  ");
     }
 }
 
@@ -176,7 +176,7 @@ void displaySnakeBody(Snake* snake, Directions direction) {
     } else if (direction == NORTH) {
         printf("  ^  ");
     } else {
-        printf("v");
+        printf("  v  ");
     }
 }
 
@@ -189,7 +189,7 @@ void displaySnakeQueue(Snake* snake, Directions direction) {
     } else if (direction == NORTH) {
         printf("  ^  ");
     } else {
-        printf("v");
+        printf("  v  ");
     }
 }
 

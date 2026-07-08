@@ -3,11 +3,7 @@
 #ifndef BOARD_H
 #define BOARD_H
 
-typedef struct Case {
-    int isEdge;
-    int hasSnake;
-    int hasApple;
-} Case;
+typedef enum Case {EDGE, APPLE, SNAKE, NONE} Case;
 
 typedef struct Apple Apple;
 
@@ -22,12 +18,8 @@ void createBoard(Case board[17][19], Apple* apple, Snake* snake);
 void displayBoard(Case board[17][19], Apple* apple, Snake* Snake);
 
 
-/* Set the hasSnake field to 0 or 1 */
-void setHasSnake(Case board[17][19], int row, int column, int number);
-
-
-/* Set the hasApple to 0 or 1 */
-void setHasSnake(Case board[17][19], int row, int column, int number);
+/* Set case */
+void setCase(Case board[17][19], int row, int column, Case newType);
 
 
 #endif
