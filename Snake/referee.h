@@ -5,12 +5,14 @@
 
 typedef struct Snake Snake;
 typedef struct Apple Apple;
+typedef enum Case {EDGE, APPLE, SNAKE, NONE} Case;
+typedef enum Directions {NORTH, SOUTH, EAST, WEST} Directions;
 
-/* Returns 1 if the player has won */
+/* Returns 1 if the player has won, 0 otherwise */
 int hasWon(Snake* snake);
 
 
-/* Returns -1 if the snake goes into the edge of the board */
+/* Returns 1 if the snake goes into the edge of the board, 0 otherwise */
 int snakeInEdgeArea(Snake* snake);
 
 
@@ -19,7 +21,11 @@ int SameLocation(Snake* snake, Apple* apple);
 
 
 /* Create the whole process to get a new apple location and get the snake to grow */
-void snakeBiteApple(Snake* snake, Apple* apple);
+void snakeBitApple(Case board[17][19], Snake* snake, Apple* apple);
+
+
+/* Move the snake */
+void MoveSnake(Case board[17][19], Snake* snake, Directions newDirection);
 
 
 #endif

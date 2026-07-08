@@ -3,7 +3,7 @@
 #include <stdio.h>
 #include <time.h>
 
-
+// TO DO : Supress HasBeenTouched field
 typedef struct Apple {
     int coordx;
     int coordy;
@@ -24,22 +24,22 @@ Apple* initApple() {
 }
 
 
-int getCordxApple(Apple* apple) {
+int getCoordxApple(Apple* apple) {
     return apple->coordx;
 }
 
 
-int getCordyApple(Apple* apple) {
+int getCoordyApple(Apple* apple) {
     return apple->coordy;
 }
 
 
-void setCordxApple(Apple* apple) {
+void setCoordxApple(Apple* apple) {
     apple->coordx = 1 + rand() % 15;
 }
 
 
-void setCordyApple(Apple* apple) {
+void setCoordyApple(Apple* apple) {
     apple->coordy = 1 + rand() % 17;
 }
 

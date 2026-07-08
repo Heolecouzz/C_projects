@@ -10,19 +10,19 @@ Apple* initApple();
 
 
 /* Get the coordonate x */
-int getCordxApple(Apple* apple);
+int getCoordxApple(Apple* apple);
 
 
 /* Get the coordonate y */
-int getCordyApple(Apple* apple);
+int getCoordyApple(Apple* apple);
 
 
 /* Set the coordonate x */
-void setCordxApple(Apple* apple);
+void setCoordxApple(Apple* apple);
 
 
 /* Set the coordonate x */
-void setCordyApple(Apple* apple);
+void setCoordyApple(Apple* apple);
 
 
 /* Set the hasBeenTouched field to the number input (1 = touched / 0 = not touched yet) */

@@ -18,7 +18,7 @@ void createBoard(Case board[17][19], Apple* apple, Snake* snake);
 void displayBoard(Case board[17][19], Apple* apple, Snake* Snake);
 
 
-/* Set case */
+/* Set case to a new type */
 void setCase(Case board[17][19], int row, int column, Case newType);
 
 

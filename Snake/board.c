@@ -25,7 +25,7 @@ void createBoard(Case board[17][19], Apple* apple, Snake* snake) {
     }
 
     // Place the first Apple
-    board[getCordyApple(apple)][getCordxApple(apple)] = APPLE;
+    board[getCoordyApple(apple)][getCoordxApple(apple)] = APPLE;
     // Place the snake at the beginning
     for (int i = 2; i < 5; i++) {
         board[8][i] = SNAKE;
@@ -63,6 +63,6 @@ void displayBoard(Case board[17][19], Apple* apple, Snake* snake) {
 }
 
 
-void setHasSnake(Case board[17][19], int row, int column, Case newType) {
+void setCase(Case board[17][19], int row, int column, Case newType) {
     board[row][column] = newType;
 }
