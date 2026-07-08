@@ -28,4 +28,8 @@ void snakeBitApple(Case board[17][19], Snake* snake, Apple* apple);
 void MoveSnake(Case board[17][19], Snake* snake, Directions newDirection);
 
 
+/* Verify if the new direction can be done */
+int newDirectionAllowed(Snake* snake, Directions newDirection);
+
+
 #endif

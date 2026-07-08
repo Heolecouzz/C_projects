@@ -114,3 +114,31 @@ void MoveSnake(Case board[17][19], Snake* snake, Directions newDirection) {
     
     setCase(board, getCoordy(snake, 0), getCoordx(snake, 0), SNAKE);
 }
+
+
+int newDirectionAllowed(Snake* snake, Directions newDirection) {
+
+    Directions direction = getDirection(snake, 0);
+
+    if (direction == NORTH) {
+        if (newDirection == SOUTH) {
+            return 0;
+        }
+        return 1;
+    } else if (direction == SOUTH) {
+        if (newDirection == NORTH) {
+            return 0;
+        }
+        return 1;
+    } else if (direction == EAST) {
+        if (newDirection == WEST) {
+            return 0;
+        }
+        return 1;
+    } else {
+        if (newDirection == EAST) {
+            return 0;
+        }
+        return 1;
+    }
+}

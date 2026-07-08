@@ -32,8 +32,10 @@ int main() {
     assert(getSnakePart(snake, 3) == QUEUE);
     assert(getSnakePart(snake, 2) == BODY);
 
-    MoveSnake(board, snake, NORTH);
-    displayBoard(board, apple, snake);
+    if (newDirectionAllowed(snake, NORTH)) {
+        MoveSnake(board, snake, NORTH);
+        displayBoard(board, apple, snake);
+    }
     MoveSnake(board, snake, WEST);
     displayBoard(board, apple, snake);
 
