@@ -10,9 +10,9 @@ int main() {
     Apple* apple = initApple();
     Snake* snake = initializeSnake();
 
-    createBoard(SnakeBoard, apple, snake);
+    createBoard(SnakeBoard, apple);
 
-    displayBoard(SnakeBoard, apple, snake);
+    displayBoard(SnakeBoard, snake);
 
     return 1;
 }

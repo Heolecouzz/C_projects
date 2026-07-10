@@ -70,18 +70,22 @@ int getSnakeLength(Snake* snake);
 
 
 /* Display the head of the snake */
-void displaySnakeHead(Snake* snake, Directions direction);
+void displaySnakeHead(Directions direction);
 
 
 /* Display the body of the snake */
-void displaySnakeBody(Snake* snake, Directions direction);
+void displaySnakeBody(Directions direction);
 
 
 /* Display the queue of the snake */
-void displaySnakeQueue(Snake* snake, Directions direction);
+void displaySnakeQueue(Directions direction);
 
 
 /* The user gives the row and the column and returns corresponding to the coordonates. Returns -1 if it doesn't exist */
 int boardToSnakeIndex(Snake* snake, int coordx, int coordy);
+
+
+/* Free the memory space allocated for the snake */
+void freeSnake(Snake* snake);
 
 #endif

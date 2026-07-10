@@ -2,9 +2,9 @@ CC = gcc
 
 CFLAGS = -Wall -Wextra -Werror -g
 
-TARGET = ConnectFour
+TARGET = Snake
 
-OBJ = ...
+OBJ = game.o board.o referee.o apples.o snake.o
 
 all : $(TARGET)
 

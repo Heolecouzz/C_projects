@@ -11,11 +11,11 @@ typedef struct Snake Snake;
 
 
 /* Creates the board for the game (15x17) */
-void createBoard(Case board[17][19], Apple* apple, Snake* snake);
+void createBoard(Case board[17][19], Apple* apple);
 
 
 /* Display board */
-void displayBoard(Case board[17][19], Apple* apple, Snake* Snake);
+void displayBoard(Case board[17][19], Snake* Snake);
 
 
 /* Set case to a new type */

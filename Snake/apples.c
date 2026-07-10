@@ -57,3 +57,8 @@ void setTouchedField(Apple* apple, int number) {
 int getTouchedField(Apple* apple) {
     return apple->hasBeenTouched;
 }
+
+
+void freeApple(Apple* apple) {
+    free(apple);
+}

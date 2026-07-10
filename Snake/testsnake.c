@@ -43,6 +43,8 @@ int main() {
     assert(isQueue(snake, 3) == 1);
     assert(getDirection(snake, 3) == NORTH);
 
+    freeSnake(snake);
+
     printf("ALL TESTS PASSED");
     return 1;
 }

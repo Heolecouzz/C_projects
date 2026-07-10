@@ -33,4 +33,8 @@ void setTouchedField(Apple* apple, int number);
 int getTouchedField(Apple* apple);
 
 
+/* Free the memory space allocated for the apple */
+void freeApple(Apple* apple);
+
+
 #endif

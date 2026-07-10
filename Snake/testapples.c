@@ -43,5 +43,7 @@ int main() {
 
     printf("ALL TESTS PASSED SUCESSFULLY\n");
 
+    freeApple(myApple);
+
     return 1;
 }

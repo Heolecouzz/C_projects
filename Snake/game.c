@@ -82,7 +82,7 @@ int main() {
 
     Snake* snake = initializeSnake();
 
-    createBoard(board, apple, snake);
+    createBoard(board, apple);
 
     int choice, usleepChoice;
     printf("Welcome to snake ! Your aim is to eat apples to grow !\n\n");
@@ -114,9 +114,11 @@ int main() {
 
     system("clear");
 
-    displayBoard(board, apple, snake);
+    displayBoard(board, snake);
 
     while(!hasWon(snake) && !snakeInEdgeArea(snake) && !snakeCollisionSnake(snake)) {
+
+        usleep(usleepChoice);
 
         Directions direction = getDirection(snake, 0);
         direction = NewDirection(snake, direction);
@@ -127,9 +129,11 @@ int main() {
             snakeBitApple(board, snake, apple);
         }
 
-        displayBoard(board, apple, snake);
-        usleep(usleepChoice);
+        displayBoard(board, snake);
     }
+
+    freeApple(apple);
+    freeSnake(snake);
 
     printf("\n\n GAME OVER");
 

@@ -5,7 +5,7 @@
 
 
 
-void createBoard(Case board[17][19], Apple* apple, Snake* snake) {
+void createBoard(Case board[17][19], Apple* apple) {
 
     // Create edges
     for (int j = 0; j < 19; j++) {
@@ -32,7 +32,7 @@ void createBoard(Case board[17][19], Apple* apple, Snake* snake) {
     }
 }
 
-void displayBoard(Case board[17][19], Apple* apple, Snake* snake) {
+void displayBoard(Case board[17][19], Snake* snake) {
 
     printf("\033[H]\n\n");
 

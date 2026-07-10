@@ -155,7 +155,7 @@ int getSnakeLength(Snake* snake) {
 }
 
 
-void displaySnakeHead(Snake* snake, Directions direction) {
+void displaySnakeHead(Directions direction) {
     if (direction == EAST) {
         printf("\033[1;31m>>:  \033[0m");
     } else if (direction == WEST) {
@@ -168,7 +168,7 @@ void displaySnakeHead(Snake* snake, Directions direction) {
 }
 
 
-void displaySnakeBody(Snake* snake, Directions direction) {
+void displaySnakeBody(Directions direction) {
     if (direction == EAST) {
         printf("\033[1;31m>>>>>\033[0m");
     } else if (direction == WEST) {
@@ -181,7 +181,7 @@ void displaySnakeBody(Snake* snake, Directions direction) {
 }
 
 
-void displaySnakeQueue(Snake* snake, Directions direction) {
+void displaySnakeQueue(Directions direction) {
     if (direction == EAST) {
         printf("\033[1;31m  >>>\033[0m");
     } else if (direction == WEST) {
@@ -204,4 +204,9 @@ int boardToSnakeIndex(Snake* snake, int coordx, int coordy) {
         i++;
     }
     return -1;
+}
+
+
+void freeSnake(Snake* snake) {
+    free(snake);
 }
