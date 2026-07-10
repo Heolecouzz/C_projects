@@ -14,4 +14,6 @@ int main() {
     addToken(board, 2, 3, myPlayer);
 
     displayBoard(board, 6, 7);
+
+    freeMemory(myPlayer);
 }
