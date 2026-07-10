@@ -34,6 +34,8 @@ void createBoard(Case board[17][19], Apple* apple, Snake* snake) {
 
 void displayBoard(Case board[17][19], Apple* apple, Snake* snake) {
 
+    printf("\033[H]\n\n");
+
     for (int i = 1; i < 16; i++) {
         printf("- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - \n");
         for (int j = 1; j < 18; j++) {

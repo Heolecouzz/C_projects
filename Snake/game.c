@@ -84,8 +84,6 @@ int main() {
 
     createBoard(board, apple, snake);
 
-    displayBoard(board, apple, snake);
-
     int choice, usleepChoice;
     printf("Welcome to snake ! Your aim is to eat apples to grow !\n\n");
 
@@ -113,6 +111,10 @@ int main() {
     }
 
     setup_terminal();
+
+    system("clear");
+
+    displayBoard(board, apple, snake);
 
     while(!hasWon(snake) && !snakeInEdgeArea(snake) && !snakeCollisionSnake(snake)) {
 
