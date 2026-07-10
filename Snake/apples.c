@@ -35,12 +35,12 @@ int getCoordyApple(Apple* apple) {
 
 
 void setCoordxApple(Apple* apple) {
-    apple->coordx = 1 + rand() % 15;
+    apple->coordx = 1 + rand() % 17;
 }
 
 
 void setCoordyApple(Apple* apple) {
-    apple->coordy = 1 + rand() % 17;
+    apple->coordy = 1 + rand() % 15;
 }
 
 

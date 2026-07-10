@@ -23,10 +23,10 @@ int main() {
     assert(getCoordxApple(myApple) == 1);
     printf("Row 1 passed\n");
 
-    while (getCoordxApple(myApple) != 15) {
+    while (getCoordxApple(myApple) != 17) {
         setCoordxApple(myApple);
     }
-    assert(getCoordxApple(myApple) == 15);
+    assert(getCoordxApple(myApple) == 17);
     printf("Row 15 passed\n");
 
     while (getCoordyApple(myApple) != 1) {
@@ -35,10 +35,10 @@ int main() {
     assert(getCoordyApple(myApple) == 1);
     printf("Col 1 passed\n");
 
-    while (getCoordyApple(myApple) != 17) {
+    while (getCoordyApple(myApple) != 15) {
         setCoordyApple(myApple);
     }
-    assert(getCoordyApple(myApple) == 17);
+    assert(getCoordyApple(myApple) == 15);
     printf("Col 17 passed\n");
 
     printf("ALL TESTS PASSED SUCESSFULLY\n");

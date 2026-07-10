@@ -157,39 +157,39 @@ int getSnakeLength(Snake* snake) {
 
 void displaySnakeHead(Snake* snake, Directions direction) {
     if (direction == EAST) {
-        printf(">>:  ");
+        printf("\033[1;31m>>:  \033[0m");
     } else if (direction == WEST) {
-        printf("  :<<");
+        printf("\033[1;31m  :<<\033[0m");
     } else if (direction == NORTH) {
-        printf("  ^  ");
+        printf("\033[1;31m  ^  \033[0m");
     } else {
-        printf("  v  ");
+        printf("\033[1;31m  v  \033[0m");
     }
 }
 
 
 void displaySnakeBody(Snake* snake, Directions direction) {
     if (direction == EAST) {
-        printf(">>>>>");
+        printf("\033[1;31m>>>>>\033[0m");
     } else if (direction == WEST) {
-        printf("<<<<<");
+        printf("\033[1;31m<<<<<\033[0m");
     } else if (direction == NORTH) {
-        printf("  ^  ");
+        printf("\033[1;31m  ^  \033[0m");
     } else {
-        printf("  v  ");
+        printf("\033[1;31m  v  \033[0m");
     }
 }
 
 
 void displaySnakeQueue(Snake* snake, Directions direction) {
     if (direction == EAST) {
-        printf("  >>>");
+        printf("\033[1;31m  >>>\033[0m");
     } else if (direction == WEST) {
-        printf("<<<  ");
+        printf("\033[1;31m<<<  \033[0m");
     } else if (direction == NORTH) {
-        printf("  ^  ");
+        printf("\033[1;31m  ^  \033[0m");
     } else {
-        printf("  v  ");
+        printf("\033[1;31m  v  \033[0m");
     }
 }
 
