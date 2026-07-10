@@ -74,8 +74,6 @@ Directions NewDirection(Snake* snake, Directions formerDirection) {
     return directionKept;
 }
 
-// TODO : Make the game loop !
-
 int main() {
 
     Case board[17][19];
@@ -88,15 +86,35 @@ int main() {
 
     displayBoard(board, apple, snake);
 
-    printf("Press enter to start >");
-    int enter;
+    int choice, usleepChoice;
+    printf("Welcome to snake ! Your aim is to eat apples to grow !\n\n");
+
     do {
-        enter = getchar();
-    } while (enter != '\n' && enter != EOF);
+        printf("In which difficulty whould you want to play : Easy (1) / Medium (2) / Difficult (3) / Hardcore (4) > ");
+        scanf("%d", &choice);
+        if (choice != 1 && choice != 2 && choice != 3 && choice != 4) {
+            printf("\nThe only choices are : Easy (1) / Medium (2) / Difficult (3) / Hardcore (4) > ");
+        }
+    } while (choice != 1 && choice != 2 && choice != 3 && choice != 4);
+
+    switch (choice) {
+        case 1 :
+            usleepChoice = 1000000;
+            break;
+        case 2 :
+            usleepChoice = 500000;
+            break;
+        case 3 :
+            usleepChoice = 250000;
+            break;
+        case 4 :
+            usleepChoice = 100000;
+            break;
+    }
 
     setup_terminal();
 
-    while(!hasWon(snake) && !snakeInEdgeArea(snake)) {
+    while(!hasWon(snake) && !snakeInEdgeArea(snake) && !snakeCollisionSnake(snake)) {
 
         Directions direction = getDirection(snake, 0);
         direction = NewDirection(snake, direction);
@@ -108,7 +126,7 @@ int main() {
         }
 
         displayBoard(board, apple, snake);
-        usleep(1000000);
+        usleep(usleepChoice);
     }
 
     printf("\n\n GAME OVER");

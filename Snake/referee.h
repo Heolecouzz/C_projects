@@ -32,4 +32,8 @@ void MoveSnake(Case board[17][19], Snake* snake, Directions newDirection);
 int newDirectionAllowed(Snake* snake, Directions newDirection);
 
 
+/* Returns 1 if the snake makes a collisions with its own body. 0 otherwise*/
+int snakeCollisionSnake(Snake* snake);
+
+
 #endif

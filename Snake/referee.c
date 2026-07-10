@@ -52,7 +52,7 @@ void snakeBitApple(Case board[17][19], Snake* snake, Apple* apple) {
         CoordyApple = getCoordyApple(apple);
         
         for (int i = 0; i < snakeLength; i++) {
-            if (getCoordx(snake, i) != CoordxApple && getCoordy(snake, i) != CoordyApple) {
+            if (getCoordx(snake, i) != CoordxApple || getCoordy(snake, i) != CoordyApple) {
                 good++;
             }
         }
@@ -159,4 +159,20 @@ int newDirectionAllowed(Snake* snake, Directions newDirection) {
         }
         return 1;
     }
+}
+
+
+int snakeCollisionSnake(Snake* snake) {
+
+    int CoordxHead = getCoordx(snake, 0);
+    int CoordyHead = getCoordy(snake, 0);
+    int length = getSnakeLength(snake);
+
+    for (int i = 1; i < length; i++) {
+        if (getCoordx(snake, i) == CoordxHead && getCoordy(snake, i) == CoordyHead) {
+            return 1;
+        }
+    }
+
+    return 0;
 }
