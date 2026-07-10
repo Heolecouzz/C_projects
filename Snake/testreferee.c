@@ -25,6 +25,8 @@ int main() {
     while (!SameLocation(snake, apple)) {
         MoveSnake(board, snake, EAST);
         displayBoard(board, apple, snake);
+        assert(hasWon(snake) == 0);
+        assert(snakeInEdgeArea(snake) == 0);
     }
     snakeBitApple(board, snake, apple);
 

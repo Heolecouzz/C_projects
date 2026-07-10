@@ -37,7 +37,6 @@ int SameLocation(Snake* snake, Apple* apple) {
 void snakeBitApple(Case board[17][19], Snake* snake, Apple* apple) {
 
     int CoordxApple, CoordyApple, CoordxSnake, CoordySnake;
-    int good = 0;
     int allGood = 0;
 
     int snakeLength = getSnakeLength(snake);
@@ -46,6 +45,7 @@ void snakeBitApple(Case board[17][19], Snake* snake, Apple* apple) {
     CoordySnake = getCoordy(snake, 0);
 
     do {
+        int good = 0;
         setCoordxApple(apple);
         setCoordyApple(apple);
         CoordxApple = getCoordxApple(apple);
@@ -59,7 +59,6 @@ void snakeBitApple(Case board[17][19], Snake* snake, Apple* apple) {
         if (good == snakeLength) {
             allGood++;
         }
-
     } while (!allGood);
 
     setCase(board, CoordySnake, CoordxSnake, SNAKE);
@@ -68,6 +67,25 @@ void snakeBitApple(Case board[17][19], Snake* snake, Apple* apple) {
     setAllowcated(snake, snakeLength);
     setSnakePart(snake, snakeLength - 1, BODY);
     setSnakePart(snake, snakeLength, QUEUE);
+
+    CoordxSnake = getCoordx(snake, snakeLength - 1);
+    CoordySnake = getCoordy(snake, snakeLength - 1);
+    Directions direction = getDirection(snake, snakeLength - 1);
+
+    if (direction == EAST) {
+        setCoordx(snake, snakeLength, CoordxSnake - 1);
+        setCoordy(snake, snakeLength, CoordySnake);
+    } else if (direction == WEST) {
+        setCoordx(snake, snakeLength, CoordxSnake + 1);
+        setCoordy(snake, snakeLength, CoordySnake);
+    } else if (direction == NORTH) {
+        setCoordx(snake, snakeLength, CoordxSnake);
+        setCoordy(snake, snakeLength, CoordySnake + 1);
+    } else {
+        setCoordx(snake, snakeLength, CoordxSnake);
+        setCoordy(snake, snakeLength, CoordySnake - 1);
+    }
+
 }
 
 
