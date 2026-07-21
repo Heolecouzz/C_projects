@@ -14,5 +14,8 @@ int main() {
 
     displayBoard(SnakeBoard, snake);
 
+    freeApple(apple);
+    freeSnake(snake);
+
     return 1;
 }
