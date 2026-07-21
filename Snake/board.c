@@ -47,11 +47,11 @@ void displayBoard(Case board[17][19], Snake* snake) {
                 Directions direction = getDirection(snake, index);
                 printf("|");
                 if (part == HEAD) {
-                    displaySnakeHead(snake, direction);
+                    displaySnakeHead(direction);
                 } else if (part == BODY) {
-                    displaySnakeBody(snake, direction);
+                    displaySnakeBody(direction);
                 } else {
-                    displaySnakeQueue(snake, direction);
+                    displaySnakeQueue(direction);
                 }
             } else if (board[i][j] == APPLE) {
                 printf("|  \033[1;32mA\033[0m  ");
