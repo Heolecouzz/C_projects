@@ -1,30 +1,42 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <sys/types.h>
+#include <unistd.h>
 
-int main(int argc, char* argv[]) {
+int main() {
 
-    char* command = malloc(50 * sizeof(char));
+    int finished = 0;
+    int commandLength = 100;
+    int commandArrayLentgh = 50;
+    char* command = malloc (commandLength * sizeof(char));
+    char* commandArray = malloc(commandArrayLentgh * sizeof(char));
 
-    printf("%s", argv[0]);
-    system("clear");
-
-    if (argc != 1) {
-        printf("Only type ./minishell with no other arguments !");
-        exit(EXIT_FAILURE);
-    }
-
-    while (strcmp(command, "exit") != 0) {
+    while (!finished) {
 
         printf("> ");
-        scanf("%49s", command);
+        fgets(command, commandLength, stdin);
+        int index = strcspn(command, "\n");
+        printf("\nIndex = %d", index);
+        //command[strcspn(command, "\n")] = '\0';
 
         if (strcmp(command, "exit") == 0) {
             printf("Goodbye, see you soon !");
-            free(command);
+            free(commandArray);
             exit(EXIT_SUCCESS);
         } else {
-            printf("The command %s cannot actually be treated yet, but this will be available soon !\n", command);
+
+            printf("Command will be processed soon");
+            
+            // pid_t pid = fork();
+
+            //if (pid == 0) {
+                // Son part
+
+            //}
         }
     }
+
+    free(command);
+    free(commandArray);
 }
