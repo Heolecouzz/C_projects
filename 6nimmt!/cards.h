@@ -3,7 +3,13 @@
 typedef struct Card Card;
 
 /* Returns the card number */
-int cardNumber(Card card);
+int getCardNumber(Card* card);
 
 /* Returns the points of the card */
-int cardPoints(Card card);
+int getCardPoints(Card* card);
+
+/* Creates one card */
+Card* createCard(int number, int points);
+
+/* Free the memory space allocated for cards */
+void freeCard(Card* card);
