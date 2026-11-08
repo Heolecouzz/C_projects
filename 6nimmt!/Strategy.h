@@ -7,10 +7,10 @@ typedef struct Card Card;
 Card* ascendingStrategy(Player* player);
 
 /* In this strategy, the player plays the card which are the nearest from another card on the board */
-Card* nearestStrategy(Player* player, Card** board);
+Card* nearestStrategy(Player* player);
 
 /* In this strategy, the player plays in the lane with the less number of cards */
-Card* minLaneStrategy(Player* player, Card** board);
+Card* minLaneStrategy(Player* player);
 
 /* In this strategy, the player plays in the lane with the minimum of points */
-Card* minPointStrategy(Player* player, Card** board);
+Card* minPointStrategy(Player* player);
