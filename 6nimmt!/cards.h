@@ -1,5 +1,8 @@
 /* Define a card */
 
+#ifndef CARDS_H
+#define CARDS_H
+
 typedef struct Card Card;
 
 /* Returns the card number */
@@ -13,3 +16,5 @@ Card* createCard(int number, int points);
 
 /* Free the memory space allocated for cards */
 void freeCard(Card* card);
+
+#endif

@@ -1,5 +1,5 @@
-#include <stdio.h>
 #include "cards.h"
+#include <assert.h>
 
 int main() {
 
@@ -19,10 +19,22 @@ int main() {
             points = 1;
         }
 
-        printf("i = %d\n", i);
         pile[i-1] = createCard(i, points);
+    }
 
-        printf("The card %d cost %d points\n", getCardNumber(pile[i -1]), getCardPoints(pile[i -1]));
+    for (int i = 1; i <= 104; i++) {
+        assert(getCardNumber(pile[i -1]) == i);
+        if (i % 10 == 0) {
+            assert(getCardPoints(pile[i -1]) == 3);
+        }else if (i == 55) {
+            assert(getCardPoints(pile[i -1]) == 7);
+        } else if (i % 5 == 0) {
+            assert(getCardPoints(pile[i -1]) == 2);
+        } else if (i == 11 || i == 22 || i == 33 || i == 44 || i == 66 || i == 77 || i == 88 || i == 99) {
+            assert(getCardPoints(pile[i -1]) == 5);
+        } else {
+            assert(getCardPoints(pile[i -1]) == 1);
+        }
     }
 
     for (int i = 0; i < 104; i++) {
