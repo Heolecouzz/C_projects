@@ -1,6 +1,7 @@
 #include "board.h"
 #include <assert.h>
 #include "cards.h"
+#include <stdio.h>
 
 int main() {
     
@@ -21,6 +22,11 @@ int main() {
     assert(getNbCardLane(3) == 0);
     assert(getNbCardLane(4) == 0);
 
+    assert(getLastCardLane(1) == NULL);
+    assert(getLastCardLane(2) == NULL);
+    assert(getLastCardLane(3) == NULL);
+    assert(getLastCardLane(4) == NULL);
+
     placeCard(card1, 1);
     placeCard(card2, 2);
     placeCard(card3, 3);
@@ -36,6 +42,11 @@ int main() {
     assert(getPointLane(3) == 1);
     assert(getPointLane(4) == 1);
 
+    assert(getCardNumber(getLastCardLane(1)) == 1);
+    assert(getCardNumber(getLastCardLane(2)) == 2);
+    assert(getCardNumber(getLastCardLane(3)) == 3);
+    assert(getCardNumber(getLastCardLane(4)) == 4);
+
     placeCard(card55, 1);
     placeCard(card5, 1);
 
@@ -48,6 +59,11 @@ int main() {
     assert(getPointLane(2) == 1);
     assert(getPointLane(3) == 1);
     assert(getPointLane(4) == 1);
+
+    assert(getCardNumber(getLastCardLane(1)) == 5);
+    assert(getCardNumber(getLastCardLane(2)) == 2);
+    assert(getCardNumber(getLastCardLane(3)) == 3);
+    assert(getCardNumber(getLastCardLane(4)) == 4);
 
     placeCard(card6, 1);
     placeCard(card7, 1);
@@ -62,6 +78,11 @@ int main() {
     assert(getPointLane(3) == 1);
     assert(getPointLane(4) == 1);
 
+    assert(getCardNumber(getLastCardLane(1)) == 7);
+    assert(getCardNumber(getLastCardLane(2)) == 2);
+    assert(getCardNumber(getLastCardLane(3)) == 3);
+    assert(getCardNumber(getLastCardLane(4)) == 4);
+
     placeCard(card8, 1);
 
     assert(getNbCardLane(1) == 1);
@@ -73,6 +94,11 @@ int main() {
     assert(getPointLane(2) == 1);
     assert(getPointLane(3) == 1);
     assert(getPointLane(4) == 1);
+
+    assert(getCardNumber(getLastCardLane(1)) == 8);
+    assert(getCardNumber(getLastCardLane(2)) == 2);
+    assert(getCardNumber(getLastCardLane(3)) == 3);
+    assert(getCardNumber(getLastCardLane(4)) == 4);
 
     freeCard(card1);
     freeCard(card2);

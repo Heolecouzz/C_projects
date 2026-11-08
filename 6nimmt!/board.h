@@ -17,4 +17,7 @@ void placeCard(Card* card, int lane);
 /* Create the initial board, full of NULL */
 void createBoard();
 
+/* Get the last card of a lane */
+Card* getLastCardLane(int lane);
+
 #endif

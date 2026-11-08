@@ -48,3 +48,12 @@ void createBoard() {
         }
     }
 }
+
+
+Card* getLastCardLane(int lane) {
+    int length = getNbCardLane(lane);
+    if (length == 0) {
+        return NULL;
+    }
+    return board[lane - 1][length - 1];
+}
