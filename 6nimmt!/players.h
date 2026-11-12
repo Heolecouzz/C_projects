@@ -3,11 +3,12 @@
 #ifndef PLAYERS_H
 #define PLAYERS_H
 
+typedef struct Strategy Strategy;
 typedef struct Player Player;
 typedef struct Card Card;
 
-/* Play a card, thanks to its strategy, to a given lane */
-int playCard(Player* player, int lane);
+/* Retrieve the card to play, thanks to its strategy, thanks to its strategy, to a given lane */
+Strategy* playCard(Player* player);
 
 /* Getting the strategy of the player */
 char* getStrategy(Player* player);

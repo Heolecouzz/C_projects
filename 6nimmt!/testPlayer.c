@@ -17,15 +17,11 @@ int main() {
     Card* card9 = createCard(9, 1);
     Card* card10 = createCard(10, 3);
 
-    
-
     assert(getPlayerPoints(player) == 0);
     assert(getStrategy(player) == "ascendingStrategy");
     for (int k = 0; k < 10; k++) {
         assert(getPlayerCard(player, k) == NULL);
     }
-
-    
 
     setPlayerCard(player, card2, 0);
     setPlayerCard(player, card5, 1);

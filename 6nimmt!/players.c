@@ -3,10 +3,8 @@
 #include "cards.h"
 #include <stdlib.h>
 
-typedef struct Card Card;
-
 typedef struct Player {
-    char* strategy;
+    Strategy* strategy;
     int points;
     Card* heldCards[10];
 } Player;
@@ -21,21 +19,8 @@ int IndexCard(Player* player, int num) {
 }
 
 
-int playCard(Player* player, int lane) {
-    if (player->strategy == "ascendingStrategy") {
-        ascendingStrategy(player);
-    } else if (player->strategy == "nearestStrategy") {
-        nearestStrategy(player);
-    } else if (player->strategy == "minLaneStrategy") {
-        minLaneStrategy(player);
-    } else {
-        minPointStrategy(player);
-    }
-}
-
-
 char* getStrategy(Player* player) {
-    return player->strategy;
+    return getStrategyName(player->strategy);
 }
 
 
@@ -85,7 +70,7 @@ Card* getPlayerCard(Player* player, int index) {
 
 Player* createPlayer(char* strategy) {
     Player* myPlayer = malloc(sizeof(Player));
-    myPlayer->strategy = strategy;
+    myPlayer->strategy = createStrategy(strategy);
     myPlayer->points = 0;
     for (int i = 0; i < 10; i++) {
         myPlayer->heldCards[i] = NULL;
@@ -95,5 +80,24 @@ Player* createPlayer(char* strategy) {
 
 
 void freePlayer(Player* player) {
+    freeStrategy(player->strategy);
     free(player);
+}
+
+
+Strategy* playCard(Player* player) {
+    char* stratName = getStrategyName(player->strategy);
+    Strategy* strat;
+    if (stratName == "ascendingStrategy") {
+        strat = ascendingStrategy(player);
+    } else if (stratName == "nearestStrategy") {
+        strat = nearestStrategy(player);
+    } else if (stratName == "minLaneStrategy") {
+        strat = minLaneStrategy(player);
+    } else {
+        strat = minPointStrategy(player);
+    }
+    int index = IndexCard(player, getCardNumber(getStrategyCard(strat)));
+    setPlayerCard(player, NULL, index);
+    return strat;
 }
